@@ -29,7 +29,9 @@ License: Apache License (>= 2)
 Encoding: UTF-8
 LazyData: true
 Suggests:
+    knitr,
     readr,
+    rmarkdown,
     stringr,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
@@ -38,3 +40,4 @@ Imports:
     rlang,
     tidyr
 RoxygenNote: 7.3.2
+VignetteBuilder: knitr

@@ -1,0 +1,33 @@
+---
+title: "Demonstration and Testing"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{demonstration_and_testing}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(redcapfiller)
+```
+
+- Install the `redcapfiller` package
+    - `install.packages("remotes")` # Run this line if the 'remotes' package isn't installed already.
+    - `remotes::install_github("ctsit/redcapfiller")`
+- Select a classic REDCap project of your choosing. For a very basic project that exercises all the field types and text validation types, see [REDCapR's validation-types-1 project.xml](https://github.com/OuhscBbmc/REDCapR/blob/main/inst/test-data/projects/validation-types-1/project.xml)
+- Make yourself an API token in that project
+- Copy the API token redcap_uri, pid, and other details into a `credentials.csv` that conforms to the specs of [REDCapR::create_credential_local()](https://ouhscbbmc.github.io/REDCapR/reference/retrieve_credential.html)
+- Copy [example.env](https://github.com/ctsit/redcapfiller/blob/main/example.env) to your R Project directory and name it `.env`
+- Adjust the value of `path_credential`  in `.env` setting it to the path to your `credentials.csv` created above.
+- Adjust the value of `filler_demo_pid` in `.env` to match the project ID of the project you are testing with.
+- Open the R project
+- Copy [proof_of_concept.R](https://github.com/ctsit/redcapfiller/blob/main/proof_of_concept.R) into the project directory.
+- Open `proof_of_concept.R`
+- Start reading/running the code in `proof_of_concept.R`
