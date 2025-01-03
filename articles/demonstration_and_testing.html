@@ -77,10 +77,9 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">redcapfiller</span><span class="op">)</span></span></code></pre></div>
+<p>Follow these steps to demonstrate the package’s capabilities:</p>
 <ul>
-<li>Install the <code>redcapfiller</code> package
+<li>Install the <code>redcapfiller</code> package.
 <ul>
 <li>
 <code>install.packages("remotes")</code> # Run this line if the
@@ -91,29 +90,24 @@
 <li>Select a classic REDCap project of your choosing. For a very basic
 project that exercises all the field types and text validation types,
 see <a href="https://github.com/OuhscBbmc/REDCapR/blob/main/inst/test-data/projects/validation-types-1/project.xml" class="external-link">REDCapR’s
-validation-types-1 project.xml</a>
-</li>
-<li>Make yourself an API token in that project</li>
+validation-types-1 project.xml</a>.</li>
+<li>Make yourself an API token in that project.</li>
 <li>Copy the API token redcap_uri, pid, and other details into a
-<code>credentials.csv</code> that conforms to the specs of <a href="https://ouhscbbmc.github.io/REDCapR/reference/retrieve_credential.html" class="external-link">REDCapR::create_credential_local()</a>
-</li>
+<code>credentials.csv</code> that conforms to the specs of <a href="https://ouhscbbmc.github.io/REDCapR/reference/retrieve_credential.html" class="external-link">REDCapR::create_credential_local()</a>.</li>
 <li>Copy <a href="https://github.com/ctsit/redcapfiller/blob/main/example.env" class="external-link">example.env</a>
-to your R Project directory and name it <code>.env</code>
-</li>
+to your R Project directory and name it <code>.env</code>.</li>
 <li>Adjust the value of <code>path_credential</code> in
 <code>.env</code> setting it to the path to your
 <code>credentials.csv</code> created above.</li>
 <li>Adjust the value of <code>filler_demo_pid</code> in
 <code>.env</code> to match the project ID of the project you are testing
 with.</li>
-<li>Open the R project</li>
+<li>Open the R project.</li>
 <li>Copy <a href="https://github.com/ctsit/redcapfiller/blob/main/proof_of_concept.R" class="external-link">proof_of_concept.R</a>
 into the project directory.</li>
-<li>Open <code>proof_of_concept.R</code>
-</li>
+<li>Open <code>proof_of_concept.R</code>.</li>
 <li>Start reading/running the code in
-<code>proof_of_concept.R</code>
-</li>
+<code>proof_of_concept.R</code>.</li>
 </ul>
 </div>
 

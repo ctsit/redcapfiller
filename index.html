@@ -71,24 +71,24 @@
 <div class="page-header"><h1 id="redcap-filler">
 <a href="https://github.com/ctsit/redcapfiller" class="external-link">REDCap Filler</a><a class="anchor" aria-label="anchor" href="#redcap-filler"></a>
 </h1></div>
-<p>REDCap Filler provides a testing and development service to users of Vanderbilt University’s <a href="https://projectredcap.org/" class="external-link">REDCap</a>. It generates and loads test data into a REDCap project, using the project’s design to guide test data generation. This data-driven process allows rapid data creation with minimal effort. This provides a low-cost way to test many of the project features and can provide more test data as input for reporting and other downstream processes.</p>
+<p>REDCap Filler provides a testing and development service to users of Vanderbilt University’s <a href="https://projectredcap.org/" class="external-link">REDCap</a>. It generates and loads test data into a REDCap project, using the project’s design to guide test data generation. This data-driven process allows rapid data creation with minimal effort. This provides a low-cost way to test many of the project features. It provides test data as input for reporting and other downstream processes.</p>
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
-<p>The redcapfiller package is only available as source code on Github. The easiest way to install it from R or RStudio is using the <code>remotes</code> package:</p>
+<p>The redcapfiller package is only available as source code on GitHub. The easiest way to install it from R or RStudio using the <code>remotes</code> package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span> <span class="co"># Run this line if the 'remotes' package isn't installed already.</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span> <span class="co"># Run this line if the 'remotes' package hasn't been installed already.</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ctsit/redcapfiller"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="using-redcap-filler">Using REDCap Filler<a class="anchor" aria-label="anchor" href="#using-redcap-filler"></a>
 </h3>
-<p>Copy <a href="https://github.com/ctsit/redcapfiller/blob/main/proof_of_concept.R" class="external-link">proof_of_concept.R</a> to and adapt it to your needs. It will add 5 records to a classic REDCap project identified by <code>filler_demo_pid</code> whose credentials are stored in the the CSV named in <code>path_credential</code> It will fill the variables its how to fill. For more detail on how to set up this script, see <a href="https://ctsit.github.io/redcapfiller/articles/demonstration_and_testing.html" class="external-link">Demonstration and Testing procedure</a></p>
+<p>Copy <a href="https://github.com/ctsit/redcapfiller/blob/main/proof_of_concept.R" class="external-link">proof_of_concept.R</a> to and adapt it to your needs. It will add 5 records to a classic REDCap project identified by <code>filler_demo_pid</code> whose credentials are stored in the CSV named in <code>path_credential</code> It will fill the variables it knows how to fill. For more details on how to set up this script, see <a href="https://ctsit.github.io/redcapfiller/articles/demonstration_and_testing.html" class="external-link">Demonstration and Testing procedure</a></p>
 </div>
 <div class="section level3">
 <h3 id="limitations">Limitations<a class="anchor" aria-label="anchor" href="#limitations"></a>
 </h3>
-<p>REDCap Filler has not yet understand all the dimensions of a modern REDCap project. It knows how to fill the categorical fields checkbox, dropdown, and radio. It ignores all other field types and will not attempt to fill them. It doesn’t even know how to fill a yesno field. :-( Filler only knows how to fill classic projects without repeating forms or events. It does not honor formn display logic and ignores all fields governed by branching logic.</p>
+<p>REDCap Filler does not yet understand all the dimensions of a modern REDCap project. It can fill the categorical fields checkbox, dropdown, and radio. It ignores all other field types and will not attempt to fill them. It doesn’t even know how to fill a yesno field. :-( Filler only knows how to fill classic projects without repeating forms or events. It does not honor form display logic and ignores all fields governed by branching logic.</p>
 <p>Focusing more on what Filler <em>can</em> do, the first release milestone will support these features:</p>
 <ul>
 <li>Use the REDCap data dictionary as the primary input. Add a few parameters to define record count and forms to fill</li>
@@ -105,9 +105,9 @@
 <div class="section level3">
 <h3 id="futures">Futures<a class="anchor" aria-label="anchor" href="#futures"></a>
 </h3>
-<p>The goal of this project is to populate complex REDCap projects using the project design. If the REDCap API exposes a design dimension, we plan to use that to guide how the Filler populates projects. Yet that will take some time to fully develop. This the proposed timeline of features:</p>
+<p>This project aims to populate complex REDCap projects using the project design. If the REDCap API exposes a design dimension, we plan to use that to guide how the Filler populates projects. Yet, that will take some time to develop fully. This is the proposed timeline of features:</p>
 <ol style="list-style-type: decimal">
-<li>Populate all fields in a classic project with no repeating objects ignoring fields with BL constraints and completely ignoring FDL.</li>
+<li>Populate all fields in a classic project with no repeating objects, ignoring fields with BL constraints and completely ignoring FDL.</li>
 <li>Add support for longitudinal projects</li>
 <li>Add support for repeating events and repeating forms.</li>
 <li>Allow non-uniform distribution of categorical fields. Allow non-default distributions on ranged fields.</li>
@@ -119,7 +119,14 @@
 <div class="section level3">
 <h3 id="collaborative-development">Collaborative development<a class="anchor" aria-label="anchor" href="#collaborative-development"></a>
 </h3>
-<p>We encourage input and collaboration. If you’re familiar with GitHub and R packages, feel free to submit a <a href="https://github.com/ctsit/redcapfiller/pulls" class="external-link">pull request</a>. If you’d like to report a bug or make a suggestion, please create a GitHub <a href="https://github.com/ctsit/redcapfiller/issues" class="external-link">issue</a>; issues are a usually a good place to ask public questions too. However, feel free to email Philip if you prefer an offline dialog(<a href="mailto:pbc@ufl.edu" class="email">pbc@ufl.edu</a>).</p>
+<p>We encourage input and collaboration. If you’re familiar with GitHub and R packages, submit a <a href="https://github.com/ctsit/redcapfiller/pulls" class="external-link">pull request</a>. If you’d like to report a bug or suggest, please create a GitHub <a href="https://github.com/ctsit/redcapfiller/issues" class="external-link">issue</a>; issues are usually a good place to ask public questions, too. However, email Philip if you prefer an offline dialog (<a href="mailto:pbc@ufl.edu" class="email">pbc@ufl.edu</a>).</p>
+<p>We’d like to thank the REDCap Community for their advice and contributions to the design of REDCap Filler.</p>
+</div>
+<div class="section level3">
+<h3 id="build-status">Build status<a class="anchor" aria-label="anchor" href="#build-status"></a>
+</h3>
+<!-- badges: start -->
+
 </div>
 </div>
   </div>
@@ -151,7 +158,12 @@
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/ctsit/redcapfiller/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/ctsit/redcapfiller/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+</ul>
+</div>
 
   </div>
 </div>
