@@ -31,7 +31,7 @@ get_long_categorical_field_responses <- function(metadata) {
     # narrow our focus to the required columns
     dplyr::select(c("field_name", "form_name", "field_type", "select_choices_or_calculations")) |>
     # separate responses
-    tidyr::separate_longer_delim("select_choices_or_calculations", delim = " | ") |>
+    tidyr::separate_longer_delim("select_choices_or_calculations", delim = stringr::regex("\\s?\\|\\s?")) |>
     # separate response_codes from response_labels
     tidyr::separate_wider_delim("select_choices_or_calculations",
       delim = ", ",
