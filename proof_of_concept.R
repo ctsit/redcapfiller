@@ -19,7 +19,8 @@ library(redcapfiller)
 path_credential <- Sys.getenv("path_credential")
 credentials <- REDCapR::retrieve_credential_local(
   path_credential,
-  project_id = Sys.getenv("filler_demo_pid")
+  project_id = 16255
+    # Sys.getenv("filler_demo_pid")
 )
 
 metadata <- REDCapR::redcap_metadata_read(
@@ -43,15 +44,16 @@ field_types_we_know_how_to_fill <- c(
   "dropdown",
   # "notes",
   "radio",
-  # "text",
+  "text",
   "yesno"
 )
 
 metadata_to_populate <-
   metadata |>
-  # Filter for record ID and forms we want to fill
-  filter(field_name == record_id_name |
-    form_name %in% forms_to_fill) |>
+  # exclude the record_id field from filling
+  filter(field_name != record_id_name) |>
+  # Filter for forms we want to fill
+  filter(form_name %in% forms_to_fill) |>
   # Exclude descriptive fields because they are not fillable
   filter(field_type != "descriptive") |>
   # Exclude calc fields because we don't control them
@@ -85,13 +87,19 @@ record_ids <- seq(first_id, first_id + number_of_records_to_populate)
 
 # get the categorical field responses in a long table and populate them
 long_categorical_field_responses <- get_long_categorical_field_responses(metadata_to_populate)
+long_text_fields <- get_long_text_fields(metadata_to_populate)
+
+long_fields_and_responses <- bind_rows(
+  long_categorical_field_responses,
+  long_text_fields
+)
 
 picked_values <-
   purrr::map(record_ids,
              get_one_rectangle_of_values,
              record_id_name,
              forms_to_fill,
-             long_categorical_field_responses
+             long_fields_and_responses
              ) |>
   bind_rows()
 

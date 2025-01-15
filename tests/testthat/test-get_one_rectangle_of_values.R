@@ -1,19 +1,21 @@
-long_categorical_field_responses <- readRDS(
-  testthat::test_path("get_long_categorical_field_response_values", "input.rds")
-)
+long_fields_and_responses <- readRDS(
+  testthat::test_path("get_one_rectangle_of_values", "input.rds")
+) |>
+  # filter out the record_id row because we are generating it in these tests
+  dplyr::filter(.data$field_name != "record_id")
 
 output <- get_one_rectangle_of_values(
   one_record_id = 1,
   record_id_name = "record_id",
   forms_to_fill = "tests",
-  long_categorical_field_responses
+  long_fields_and_responses
 )
 
 output_with_special_record_id <- get_one_rectangle_of_values(
   one_record_id = 1,
   record_id_name = "special_id",
   forms_to_fill = "tests",
-  long_categorical_field_responses
+  long_fields_and_responses
 )
 
 testthat::test_that("get_one_rectangle_of_values: ethnicity, occupation, race, and state are represented in the columns", {
@@ -26,4 +28,8 @@ testthat::test_that("get_one_rectangle_of_values: bl_caffeine, bl_exercise, and 
 
 testthat::test_that("get_one_rectangle_of_values: special_id is in the record_id position", {
   testthat::expect_equal(names(output_with_special_record_id)[[1]], "special_id")
+})
+
+testthat::test_that("get_one_rectangle_of_values: fname and lname are represented in the columns", {
+  testthat::expect_true(all(c("fname", "lname") %in% gsub("___.*", "", names(output))))
 })
