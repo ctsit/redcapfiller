@@ -44,7 +44,8 @@ field_types_we_know_how_to_fill <- c(
   # "notes",
   "radio",
   # "text",
-  "yesno"
+  "yesno",
+  "truefalse"
 )
 
 metadata_to_populate <-
