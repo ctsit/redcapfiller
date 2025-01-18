@@ -25,11 +25,16 @@ get_long_categorical_field_responses <- function(metadata) {
   balanced_responses <-
     metadata |>
     # include only categorical field types
-    dplyr::filter(.data$field_type %in% c("checkbox", "radio", "dropdown")) |>
+    dplyr::filter(.data$field_type %in% c("checkbox", "radio", "dropdown", "truefalse", "yesno")) |>
     # excluding anything displayed by branching logic
     dplyr::filter(is.na(.data$branching_logic)) |>
     # narrow our focus to the required columns
     dplyr::select(c("field_name", "form_name", "field_type", "select_choices_or_calculations")) |>
+    mutate(select_choices_or_calculations = dplyr::case_when(
+      .data$field_type == "truefalse" ~ "1, True|0, False",
+      .data$field_type == "yesno" ~ "1, Yes|0, No",
+      TRUE ~ .data$select_choices_or_calculations)
+      ) |>
     # separate responses
     tidyr::separate_longer_delim("select_choices_or_calculations", delim = stringr::regex("\\s?\\|\\s?")) |>
     # separate response_codes from response_labels
