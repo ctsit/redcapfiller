@@ -19,7 +19,7 @@ Copy [proof_of_concept.R](https://github.com/ctsit/redcapfiller/blob/main/proof_
 
 ### Limitations
 
-REDCap Filler does not yet understand all the dimensions of a modern REDCap project. It can fill the categorical fields checkbox, dropdown, and radio. It can fill unvalidated text fields. It ignores all other field types and will not attempt to fill them. It doesn't even know how to fill a yesno field. :-( Filler only knows how to fill classic projects without repeating forms or events. It does not honor form display logic and ignores all fields governed by branching logic.
+REDCap Filler does not yet understand all the dimensions of a modern REDCap project. It can fill the categorical fields. It can fill unvalidated text fields. It ignores all other field types and will not attempt to fill them. It doesn't even know how to fill a date field. :-( Filler only knows how to fill classic projects without repeating forms or events. It does not honor form display logic and ignores all fields governed by branching logic.
 
 Focusing more on what Filler _can_ do, the first release milestone will support these features:
 
