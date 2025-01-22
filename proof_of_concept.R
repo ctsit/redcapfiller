@@ -19,8 +19,8 @@ library(redcapfiller)
 path_credential <- Sys.getenv("path_credential")
 credentials <- REDCapR::retrieve_credential_local(
   path_credential,
-  project_id = 16255
-    # Sys.getenv("filler_demo_pid")
+  project_id = Sys.getenv("filler_demo_pid")
+#  project_id = 16255
 )
 
 metadata <- REDCapR::redcap_metadata_read(
@@ -45,7 +45,8 @@ field_types_we_know_how_to_fill <- c(
   # "notes",
   "radio",
   "text",
-  "yesno"
+  "yesno",
+  "truefalse"
 )
 
 metadata_to_populate <-
