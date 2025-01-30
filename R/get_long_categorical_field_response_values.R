@@ -16,6 +16,14 @@
 #' }
 get_long_categorical_field_response_values <- function(long_categorical_field_responses) {
   single_value_responses <- long_categorical_field_responses |>
+    # Filter for any categorical field_type
+    dplyr::filter(.data$field_type %in% c(
+      "checkbox",
+      "dropdown",
+      "radio",
+      "yesno"
+    )) |>
+    # Filter for anything but checkbox fields
     dplyr::filter(.data$field_type != "checkbox") |>
     dplyr::group_by(.data$field_name) |>
     dplyr::slice_sample(n = 1, weight_by = .data$weight) |>
@@ -23,6 +31,7 @@ get_long_categorical_field_response_values <- function(long_categorical_field_re
 
   multi_value_responses <-
     long_categorical_field_responses |>
+    # Filter for checkbox fields
     dplyr::filter(.data$field_type == "checkbox") |>
     dplyr::group_by(.data$field_group) |>
     dplyr::slice_sample(prop = 0.5, weight_by = .data$weight) |>
