@@ -5,8 +5,11 @@
 <url><loc>/articles/index.html</loc></url>
 <url><loc>/authors.html</loc></url>
 <url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
 <url><loc>/reference/get_long_categorical_field_response_values.html</loc></url>
 <url><loc>/reference/get_long_categorical_field_responses.html</loc></url>
+<url><loc>/reference/get_long_text_field_values.html</loc></url>
+<url><loc>/reference/get_long_text_fields.html</loc></url>
 <url><loc>/reference/get_one_rectangle_of_values.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
 <url><loc>/reference/redcapfiller-package.html</loc></url>
