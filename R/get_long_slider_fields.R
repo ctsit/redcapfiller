@@ -30,18 +30,19 @@ get_long_slider_fields <- function(metadata) {
     dplyr::filter(.data$field_type == "slider") |>
     # excluding anything displayed by branching logic
     dplyr::filter(is.na(.data$branching_logic)) |>
+    dplyr::group_by(.data$field_name) |>
     tidyr::separate_longer_delim("select_choices_or_calculations",
                                  delim = stringr::regex("\\s?\\|\\s?")) |>
     dplyr::mutate(
       text_validation_max = dplyr::if_else(
         is.na(.data$text_validation_max),
         "100",
-        .data$text_validation_max
+        as.character(.data$text_validation_max)
       ),
       text_validation_min = dplyr::if_else(
         is.na(.data$text_validation_min),
         "0",
-        .data$text_validation_min
+        as.character(.data$text_validation_min)
       )
     ) |>
     # narrow our focus to the required columns
