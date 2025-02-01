@@ -46,7 +46,8 @@ field_types_we_know_how_to_fill <- c(
   "radio",
   "text",
   "yesno",
-  "truefalse"
+  "truefalse",
+  "slider"
 )
 
 metadata_to_populate <-
@@ -89,10 +90,12 @@ record_ids <- seq(first_id, first_id + number_of_records_to_populate)
 # get the categorical field responses in a long table and populate them
 long_categorical_field_responses <- get_long_categorical_field_responses(metadata_to_populate)
 long_text_fields <- get_long_text_fields(metadata_to_populate)
+long_slider_fields <- get_long_slider_fields(metadata_to_populate)
 
 long_fields_and_responses <- bind_rows(
   long_categorical_field_responses,
-  long_text_fields
+  long_text_fields,
+  long_slider_fields
 )
 
 picked_values <-
