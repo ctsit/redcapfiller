@@ -19,7 +19,7 @@ a dataframe with these columns
   \item{text_validation_min}{REDCap text validation min}
   \item{text_validation_max}{REDCap text validation max}
   \item{mean}{mean of data to be generated}
-  \item{sd}{tandard deviation of data to be generated}
+  \item{sd}{standard deviation of data to be generated}
 
 }
 }
