@@ -64,7 +64,8 @@ get_long_slider_fields <- function(metadata) {
         na.rm = TRUE
       ),
       sd = (as.numeric(.data$text_validation_max) - as.numeric(.data$text_validation_min)) / 6
-    )
+    ) |>
+    dplyr::ungroup()
 
   return(long_slider_values)
 }

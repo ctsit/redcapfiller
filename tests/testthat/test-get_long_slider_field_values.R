@@ -4,13 +4,22 @@ long_slider_fields <- readRDS(
 
 output <- get_long_slider_field_values(long_slider_fields)
 
-#TODO: vverify test_validation_min/max
 testthat::test_that("get_long_slider_field_values returns the correct df with values within the slider ranges", {
-  testthat::expect_true(all.equal(
-    output |>
-      dplyr::filter(field_name %in% c("ethnicity", "occupation", "race", "state")) |>
-      dplyr::arrange(field_name) |>
-      dplyr::pull(field_name),
-    c("ethnicity", "occupation", "race", "state")
-  ))
+  slider_bounds <- long_slider_fields |>
+    dplyr::select(field_name, text_validation_min, text_validation_max) |>
+    dplyr::group_by(field_name) |>
+    dplyr::summarise(text_validation_min = min(text_validation_min),
+              text_validation_max = max(text_validation_max))
+
+  result <- output %>%
+    dplyr::left_join(slider_bounds, by = "field_name") |>
+    dplyr::summarise(all_within_range = all(dplyr::between(
+      as.numeric(value),
+      as.numeric(text_validation_min),
+      as.numeric(text_validation_max)
+    ), na.rm = TRUE))
+
+  testthat::expect_true(result$all_within_range)
 })
+
+
