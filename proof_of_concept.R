@@ -76,7 +76,7 @@ read_result <- REDCapR::redcap_read(
   redcap_uri = credentials$redcap_uri
 )
 
-if (read_result$success) {
+if (nrow(read_result$data) > 0) {
   max_existing_id <- max(read_result$data$record_id)
 } else {
   max_existing_id = 0
