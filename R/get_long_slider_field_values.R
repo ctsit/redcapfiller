@@ -17,10 +17,10 @@ get_long_slider_field_values <- function(long_slider_values) {
   result <- long_slider_values |>
     dplyr::filter(.data$field_type == "slider") |>
     dplyr::mutate(
-      response_code = round(stats::rnorm(n = 1,mean = .data$mean, sd = .data$sd)),
+      response_code = round(stats::rnorm(n = length(.data$mean), mean = .data$mean, sd = .data$sd)),
       response_code = as.character(ifelse(
-        .data$response_code < as.numeric(.data$text_validation_min) |
-          .data$response_code > as.numeric(.data$text_validation_max) ,
+        .data$response_code < dplyr::coalesce(as.numeric(.data$text_validation_min), 0) |
+          .data$response_code > dplyr::coalesce(as.numeric(.data$text_validation_max), 100) ,
         NA,
         .data$response_code)
       )

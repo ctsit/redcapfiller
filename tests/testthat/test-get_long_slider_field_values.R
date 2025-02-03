@@ -8,8 +8,10 @@ testthat::test_that("get_long_slider_field_values returns the correct df with va
   slider_bounds <- long_slider_fields |>
     dplyr::select(field_name, text_validation_min, text_validation_max) |>
     dplyr::group_by(field_name) |>
-    dplyr::summarise(text_validation_min = min(text_validation_min),
-              text_validation_max = max(text_validation_max))
+    dplyr::summarise(
+      text_validation_min = min(text_validation_min),
+      text_validation_max = max(text_validation_max)
+    )
 
   result <- output %>%
     dplyr::left_join(slider_bounds, by = "field_name") |>
@@ -22,4 +24,9 @@ testthat::test_that("get_long_slider_field_values returns the correct df with va
   testthat::expect_true(result$all_within_range)
 })
 
-
+testthat::test_that("get_long_slider_field_values returns a unique number for each slider", {
+  testthat::expect_equal(
+    output |> dplyr::distinct(value) |> nrow(),
+    output |> nrow()
+  )
+})
