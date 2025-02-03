@@ -28,8 +28,6 @@ get_long_slider_fields <- function(metadata) {
   long_slider_values <- metadata |>
     # include only slider field types
     dplyr::filter(.data$field_type == "slider") |>
-    # excluding anything displayed by branching logic
-    dplyr::filter(is.na(.data$branching_logic)) |>
     dplyr::group_by(.data$field_name) |>
     tidyr::separate_longer_delim("select_choices_or_calculations",
                                  delim = stringr::regex("\\s?\\|\\s?")) |>
