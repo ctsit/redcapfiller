@@ -41,7 +41,7 @@ forms_to_fill <- metadata |>
 field_types_we_know_how_to_fill <- c(
   "checkbox",
   "dropdown",
-  # "notes",
+  "notes",
   "radio",
   # "text",
   "yesno"
@@ -75,7 +75,7 @@ read_result <- REDCapR::redcap_read(
 if (read_result$success) {
   max_existing_id <- max(read_result$data$record_id)
 } else {
-  max_existing_id = 0
+  max_existing_id <- 0
 }
 
 # choose which IDs to use
@@ -86,13 +86,19 @@ record_ids <- seq(first_id, first_id + number_of_records_to_populate)
 # get the categorical field responses in a long table and populate them
 long_categorical_field_responses <- get_long_categorical_field_responses(metadata_to_populate)
 
+# get the notes field responses in a long table and populate them
+long_notes_fields_responses <- get_long_notes_fields(metadata_to_populate)
+
+
 picked_values <-
-  purrr::map(record_ids,
-             get_one_rectangle_of_values,
-             record_id_name,
-             forms_to_fill,
-             long_categorical_field_responses
-             ) |>
+  purrr::map(
+    record_ids,
+    get_one_rectangle_of_values,
+    record_id_name,
+    forms_to_fill,
+    long_categorical_field_responses,
+    long_notes_fields_responses
+  ) |>
   bind_rows()
 
 picked_values |> REDCapR::redcap_write(
