@@ -29,8 +29,6 @@ get_long_slider_fields <- function(metadata) {
     # include only slider field types
     dplyr::filter(.data$field_type == "slider") |>
     dplyr::group_by(.data$field_name) |>
-    tidyr::separate_longer_delim("select_choices_or_calculations",
-                                 delim = stringr::regex("\\s?\\|\\s?")) |>
     dplyr::mutate(
       text_validation_max = dplyr::if_else(
         is.na(.data$text_validation_max),
@@ -57,15 +55,10 @@ get_long_slider_fields <- function(metadata) {
     dplyr::group_by(.data$field_type) |>
     dplyr::mutate(
       weight = 100,
-      mean = mean(
-        c(as.numeric(.data$text_validation_min), as.numeric(.data$text_validation_max)),
-        na.rm = TRUE
-      ),
+      mean = (as.numeric(.data$text_validation_min) + as.numeric(.data$text_validation_max)) / 2,
       sd = (as.numeric(.data$text_validation_max) - as.numeric(.data$text_validation_min)) / 6
     ) |>
     dplyr::ungroup()
 
   return(long_slider_values)
 }
-
-
