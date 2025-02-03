@@ -8,7 +8,8 @@ get_one_rectangle_of_values(
   one_record_id = 1,
   record_id_name,
   forms_to_fill,
-  long_categorical_field_responses
+  long_categorical_field_responses,
+  long_notes_fields_responses
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ get_one_rectangle_of_values(
 \item{forms_to_fill}{the forms to fill for this rectangle}
 
 \item{long_categorical_field_responses}{the output of `get_long_categorical_field_responses()`}
+
+\item{long_notes_fields_responses}{the output of `get_long_notes_fields()`}
 }
 \value{
 a rectangle of data with appropriate REDCap identifiers ready to write to REDCap
