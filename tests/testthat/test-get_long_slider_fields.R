@@ -1,4 +1,4 @@
-metadata_file <- testthat::test_path("get_long_categorical_field_responses", "metadata.csv")
+metadata_file <- testthat::test_path("shared_testdata", "metadata.csv")
 metadata <- readr::read_csv(metadata_file)
 
 output <- get_long_slider_fields(metadata)

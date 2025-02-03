@@ -1,4 +1,4 @@
-metadata_file <- testthat::test_path("get_long_categorical_field_responses", "metadata.csv")
+metadata_file <- testthat::test_path("shared_testdata", "metadata.csv")
 metadata <- readr::read_csv(metadata_file)
 
 output <- get_long_categorical_field_responses(metadata)
@@ -54,3 +54,4 @@ testthat::test_that("get_long_categorical_field_responses: yesno are 1 and 0", {
    dplyr::pull(response_code),
  c("1", "0"))
 })
+
