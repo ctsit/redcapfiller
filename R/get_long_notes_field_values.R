@@ -10,9 +10,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' notes_responses <- get_long_notes_field_responses(notes_fields)
+#' notes_responses <- get_long_notes_field_values(notes_fields)
 #' }
-get_long_notes_field_responses <- function(long_notes_fields) {
+get_long_notes_field_values <- function(long_notes_fields) {
   notes_responses <- long_notes_fields |>
     # Ensure we're only working with notes fields
     dplyr::filter(.data$field_type == "notes") |>
@@ -20,7 +20,7 @@ get_long_notes_field_responses <- function(long_notes_fields) {
     dplyr::mutate(
       value = purrr::map_chr(
         .data$field_name,
-        ~ lorem::ipsum(1, avg_words_per_sentence = 10) |>
+        ~ lorem::ipsum(1, avg_words_per_sentence = 6) |>
           as.character()
       )
     ) |>

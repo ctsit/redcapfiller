@@ -30,7 +30,7 @@ get_one_rectangle_of_values <- function(
   value_getter_functions <- c(
     "get_long_categorical_field_response_values",
     "get_long_text_field_values",
-    "get_long_notes_field_responses"
+    "get_long_notes_field_values"
   )
 
   process_one_value_getter <- function(value_getter, df) {

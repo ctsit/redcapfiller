@@ -2,7 +2,7 @@
 
 export(get_long_categorical_field_response_values)
 export(get_long_categorical_field_responses)
-export(get_long_notes_field_responses)
+export(get_long_notes_field_values)
 export(get_long_notes_fields)
 export(get_long_text_field_values)
 export(get_long_text_fields)
