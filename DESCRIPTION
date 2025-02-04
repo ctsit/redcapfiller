@@ -40,8 +40,6 @@ Imports:
     lorem,
     purrr,
     rlang,
-    tidyr,
-    lorem,
-    purrr
+    tidyr
 RoxygenNote: 7.3.2
 VignetteBuilder: knitr

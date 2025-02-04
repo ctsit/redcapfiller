@@ -5,8 +5,6 @@
 #' @param forms_to_fill the forms to fill for this rectangle
 #' @param long_fields_and_responses the output of `get_long_*_fields` and
 #'   `get_long_categorical_field_responses_responses` functions
-#' @param long_categorical_field_responses the output of `get_long_categorical_field_responses()`
-#' @param long_notes_fields_responses the output of `get_long_notes_fields()`
 #'
 #' @returns a rectangle of data with appropriate REDCap identifiers ready to write to REDCap
 #' @export
@@ -20,7 +18,7 @@ get_one_rectangle_of_values <- function(
     one_record_id = 1,
     record_id_name,
     forms_to_fill,
-    long_categorical_field_responses) {
+    long_fields_and_responses) {
   # Build tibble of static REDCap identifiers
   redcap_identifiers <- dplyr::tibble(
     record_id = one_record_id
@@ -31,7 +29,8 @@ get_one_rectangle_of_values <- function(
 
   value_getter_functions <- c(
     "get_long_categorical_field_response_values",
-    "get_long_text_field_values"
+    "get_long_text_field_values",
+    "get_long_notes_field_responses"
   )
 
   process_one_value_getter <- function(value_getter, df) {
