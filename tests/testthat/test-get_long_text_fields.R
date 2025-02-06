@@ -1,4 +1,4 @@
-metadata_file <- testthat::test_path("get_long_text_fields", "metadata.csv")
+metadata_file <- testthat::test_path("shared_testdata", "metadata.csv")
 metadata <- readr::read_csv(metadata_file)
 
 output <- get_long_text_fields(metadata)
@@ -30,3 +30,4 @@ testthat::test_that("get_long_text_fields: weights are balanced", {
     dplyr::distinct(balanced) |>
     dplyr::pull(balanced))
 })
+
