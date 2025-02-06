@@ -33,3 +33,18 @@ testthat::test_that("get_one_rectangle_of_values: special_id is in the record_id
 testthat::test_that("get_one_rectangle_of_values: fname and lname are represented in the columns", {
   testthat::expect_true(all(c("fname", "lname") %in% gsub("___.*", "", names(output))))
 })
+
+testthat::test_that("get_one_rectangle_of_values: notes fields are represented in the columns", {
+  testthat::expect_true(all(c("addl_notes", "bl_treatments_other_notes", "phy_notes") %in% names(output)))
+})
+
+testthat::test_that("get_one_rectangle_of_values: has values for all notes fields", {
+  testthat::expect_true(all(!is.na(output$addl_notes)))
+  testthat::expect_true(all(!is.na(output$bl_treatments_other_notes)))
+  testthat::expect_true(all(!is.na(output$phy_notes)))
+
+  testthat::expect_true(all(!is.na(output_with_special_record_id$addl_notes)))
+  testthat::expect_true(all(!is.na(output_with_special_record_id$bl_treatments_other_notes)))
+  testthat::expect_true(all(!is.na(output_with_special_record_id$phy_notes)))
+})
+

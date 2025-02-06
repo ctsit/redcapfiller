@@ -1,0 +1,13 @@
+field_name,form_name,section_header,field_type,field_label,select_choices_or_calculations,field_note,text_validation_type_or_show_slider_number,text_validation_min,text_validation_max,identifier,branching_logic,required_field,custom_alignment,question_number,matrix_group_name,matrix_ranking,field_annotation
+record_id,tests,,text,Record ID,,,,,,,,,,,,,
+incl_visit_date,tests,,text,Visit date,,,date_mdy,,,,,,,,,,
+incl_icf_date,tests,,text,Date subject provided informed consent:,,,date_mdy,,,,"[event-name] = ""initial_study_visi_arm_1""",,,,,,
+incl_1,tests,,yesno,Female at least 18 years old,,,,,,,,,,,,,@DEFAULT='[screening_arm_1][incl_1:value]'
+excl_1,tests,,yesno,"Any condition that at the discretion of the investigator, medical doctor, or designee will impact the safety of the subject or the scientific integrity of the trial",,,,,,,,,,,,,@DEFAULT='[screening_arm_1][excl_5:value]'
+bl_date,tests,,text,Today's date,,,date_mdy,,,,,y,LV,,,,@TODAY
+bl_treatments,tests,,checkbox,Do you regularly use any of the following on your torso/ bra area?  Choose all that apply.,"1, Lotions | 2, Exfoliants | 3, Other skin treatments, please specify below. | 0, None",,,,,,,y,LV,,,,@NONEOFTHEABOVE='0'
+bl_treatments_other,tests,,text,Specify Other,,,,,,,[bl_treatments(3)] = '1',y,LV,,,,
+addl_notes,tests,,notes,Additional Notes,,,,,,,,,,,,,
+bl_treatments_other_notes,tests,,notes,Additional Notes for Treatments,,,,,,,,,,,,,
+phy_notes,tests,,notes,Physician Notes,,,,,,,[bl_treatments(3)] = '1',,,,,,
+,,,,,,,,,,,,y,,,,,

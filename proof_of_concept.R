@@ -20,7 +20,7 @@ path_credential <- Sys.getenv("path_credential")
 credentials <- REDCapR::retrieve_credential_local(
   path_credential,
   project_id = Sys.getenv("filler_demo_pid")
-#  project_id = 16255
+  #  project_id = 16255
 )
 
 metadata <- REDCapR::redcap_metadata_read(
@@ -42,7 +42,7 @@ forms_to_fill <- metadata |>
 field_types_we_know_how_to_fill <- c(
   "checkbox",
   "dropdown",
-  # "notes",
+  "notes",
   "radio",
   "text",
   "yesno",
@@ -79,7 +79,7 @@ read_result <- REDCapR::redcap_read(
 if (nrow(read_result$data) > 0) {
   max_existing_id <- max(read_result$data$record_id)
 } else {
-  max_existing_id = 0
+  max_existing_id <- 0
 }
 
 # choose which IDs to use
@@ -91,20 +91,23 @@ record_ids <- seq(first_id, first_id + number_of_records_to_populate)
 long_categorical_field_responses <- get_long_categorical_field_responses(metadata_to_populate)
 long_text_fields <- get_long_text_fields(metadata_to_populate)
 long_slider_fields <- get_long_slider_fields(metadata_to_populate)
+long_notes_fields <- get_long_notes_fields(metadata_to_populate)
 
 long_fields_and_responses <- bind_rows(
   long_categorical_field_responses,
   long_text_fields,
-  long_slider_fields
+  long_slider_fields,
+  long_notes_fields
 )
 
 picked_values <-
-  purrr::map(record_ids,
-             get_one_rectangle_of_values,
-             record_id_name,
-             forms_to_fill,
-             long_fields_and_responses
-             ) |>
+  purrr::map(
+    record_ids,
+    get_one_rectangle_of_values,
+    record_id_name,
+    forms_to_fill,
+    long_fields_and_responses
+  ) |>
   bind_rows()
 
 picked_values |> REDCapR::redcap_write(
