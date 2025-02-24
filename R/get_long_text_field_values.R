@@ -17,13 +17,119 @@ get_long_text_field_values <- function(long_text_fields) {
   tvt_na <- function(df) {
     df |>
       dplyr::filter(.data$tvt == "tvt_na") |>
-      dplyr::mutate(value = replicate(length(.data$field_name), lorem::ipsum_words(round(stats::rnorm(mean = .data$mean, sd = .data$sd, n = 1)))))
-    # |>
-    #   dplyr::slice_sample(prop = 0.5, weight_by = .data$weight)
+      dplyr::mutate(value = sapply(seq_len(nrow(df)), function(i) {
+        # Ensure the generated value is valid
+        n_words <- max(1, round(stats::rnorm(
+          n = 1,
+          mean = df$mean[i],
+          sd = df$sd[i]
+        )))
+        lorem::ipsum_words(n_words)
+      }))
   }
 
+  tvt_datetime <- function(df) {
+    df |>
+      dplyr::filter(.data$tvt == "tvt_datetime") |>
+      dplyr::mutate(value = {
+        # Get current time as the mean
+        current_time <- eval(parse(text = .data$origin_function))
+        # Generate random times around current time
+        times <- as.POSIXct(
+          rnorm(
+            n = nrow(df),
+            mean = as.numeric(current_time),
+            sd = mean(.data$bias, na.rm = TRUE) # Using summarized value
+          ),
+          origin = "1970-01-01"
+        )
+        # Convert to character in ISO format
+        format(times, "%Y-%m-%d %H:%M:%S")
+      })
+  }
+
+  tvt_date <- function(df) {
+    df |>
+      dplyr::filter(.data$tvt == "tvt_date") |>
+      dplyr::mutate(value = {
+        # Get current date as the mean
+        current_date <- eval(parse(text = .data$origin_function))
+        # Generate random dates around current date
+        dates <- as.Date(
+          rnorm(
+            n = nrow(df),
+            mean = as.numeric(current_date),
+            sd = mean(.data$bias, na.rm = TRUE) # Using summarized value
+          ),
+          origin = "1970-01-01"
+        )
+        # Convert to character in ISO format based on the date format
+        format(dates, "%Y-%m-%d")
+      })
+  }
+
+  tvt_email <- function(df) {
+    df |>
+      dplyr::filter(.data$tvt == "tvt_email") |>
+      dplyr::mutate(
+        value = replicate(
+          length(.data$field_name),
+          paste0(lorem::ipsum_words(1), "@example.org")
+        )
+      )
+  }
+
+  rtnorm <- function(n, mean, sd, a = NA, b = NA) {
+    a <- as.numeric(a)
+    b <- as.numeric(b)
+    a <- ifelse(is.na(a), -Inf, a)
+    b <- ifelse(is.na(b), Inf, b)
+    qnorm(runif(n, pnorm(a, mean, sd), pnorm(b, mean, sd)), mean, sd)
+  }
+
+  tvt_integer <- function(df) {
+    df |>
+      dplyr::filter(.data$tvt == "tvt_integer") |>
+      dplyr::mutate(
+        value = as.character(round(rtnorm(
+          n = length(.data$field_name), mean = .data$mean, sd = .data$sd,
+          a = text_validation_min, b = text_validation_max
+        )))
+      )
+  }
+
+  tvt_number <- function(df) {
+    df |>
+      dplyr::filter(.data$tvt == "tvt_number") |>
+      dplyr::mutate(
+        value = as.character(rtnorm(
+          n = length(.data$field_name), mean = .data$mean, sd = .data$sd,
+          a = text_validation_min, b = text_validation_max
+        ))
+      )
+  }
+
+  tvt_zipcode <- function(df) {
+    df |>
+      dplyr::filter(.data$tvt == "tvt_zipcode") |>
+      dplyr::mutate(
+        value = "32611"
+      )
+  }
+
+  tvt_phone <- function(df) {
+    df |>
+      dplyr::filter(.data$tvt == "tvt_phone") |>
+      dplyr::mutate(
+        value = "800-867-5309"
+      )
+  }
+
+
   tvt_types <- c(
-    "tvt_na"
+    "tvt_na", "tvt_datetime", "tvt_date",
+    "tvt_email", "tvt_integer", "tvt_number",
+    "tvt_zipcode", "tvt_phone"
   )
 
   process_one_text_validation_type <- function(my_tvt, df) {
@@ -35,10 +141,11 @@ get_long_text_field_values <- function(long_text_fields) {
   }
 
   text_field_values <-
-    purrr::map(tvt_types,
-               process_one_text_validation_type,
-               long_text_fields |> dplyr::filter(.data$field_type == "text")
-               ) |>
+    purrr::map(
+      tvt_types,
+      process_one_text_validation_type,
+      long_text_fields |> dplyr::filter(.data$field_type == "text")
+    ) |>
     dplyr::bind_rows()
 
   result <- text_field_values |>
