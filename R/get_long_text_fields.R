@@ -1,7 +1,8 @@
 #' @title Get every text field response from a REDCap data dictionary
 #'
 #' @description
-#' Given a REDCap data dictionary, enumerate every text field in that data dictionary and return a dataset with default weights
+#' Given a REDCap data dictionary, enumerate every text field in that data dictionary
+#' and return a dataset with default weights
 #'
 #' @param metadata A REDCap data dictionary
 #'
@@ -44,6 +45,13 @@ get_long_text_fields <- function(metadata) {
     dplyr::rename(text_validation_type = "text_validation_type_or_show_slider_number") |>
     dplyr::mutate(tvt = dplyr::case_when(
       is.na(.data$text_validation_type) ~ "tvt_na",
+      grepl("^datetime.*", .data$text_validation_type) ~ "tvt_datetime",
+      grepl("^date_", .data$text_validation_type) ~ "tvt_date",
+      grepl("email", .data$text_validation_type) ~ "tvt_email",
+      grepl("integer", .data$text_validation_type) ~ "tvt_integer",
+      grepl("number", .data$text_validation_type) ~ "tvt_number",
+      grepl("zipcode", .data$text_validation_type) ~ "tvt_zipcode",
+      grepl("phone", .data$text_validation_type) ~ "tvt_phone",
       TRUE ~ "tvt_unsupported"
     )) |>
     # set weights for each response
@@ -57,6 +65,83 @@ get_long_text_fields <- function(metadata) {
     return(result)
   }
 
+  tvt_email <- function(text_fields) {
+    result <-
+      text_fields |>
+      dplyr::filter(grepl("email", .data$text_validation_type)) |>
+      dplyr::mutate(weight = 100)
+    return(result)
+  }
+
+  tvt_datetime <- function(text_fields) {
+    result <-
+      text_fields |>
+      dplyr::filter(grepl("^datetime.*", .data$text_validation_type)) |>
+      dplyr::mutate(origin_function = "lubridate::now()", bias = 3600 * 24)
+    return(result)
+  }
+
+  tvt_date <- function(text_fields) {
+    result <-
+      text_fields |>
+      dplyr::filter(grepl("^date_", .data$text_validation_type)) |>
+      dplyr::mutate(origin_function = "lubridate::today()", bias = 36 * 24)
+    return(result)
+  }
+
+  tvt_integer <- function(text_fields) {
+    result <-
+      text_fields |>
+      dplyr::filter(grepl("integer", .data$text_validation_type)) |>
+      dplyr::mutate(
+        min_val = ifelse(!is.na(as.numeric(.data$text_validation_min)), as.numeric(.data$text_validation_min), 0),
+        max_val = ifelse(!is.na(as.numeric(.data$text_validation_max)), as.numeric(.data$text_validation_max), 0),
+        mean = (min_val + max_val) / 2,
+        sd = (max_val - min_val) / 6
+      ) |>
+      dplyr::mutate(
+        mean = dplyr::if_else(mean == 0, 15, mean),
+        sd = dplyr::if_else(sd == 0, 3, sd)
+      ) |>
+      dplyr::select(-min_val, -max_val)
+  }
+
+  tvt_number <- function(text_fields) {
+    result <-
+      text_fields |>
+      dplyr::filter(grepl("number", .data$text_validation_type)) |>
+      dplyr::mutate(
+        min_val = as.numeric(.data$text_validation_min),
+        max_val = as.numeric(.data$text_validation_max)
+      ) |>
+      dplyr::mutate(
+        min_val = dplyr::coalesce(min_val, 0),
+        max_val = dplyr::coalesce(max_val, 0),
+        mean = (min_val + max_val) / 2,
+        sd = (max_val - min_val) / 6
+      ) |>
+      dplyr::mutate(mean = dplyr::if_else(.data$mean == 0, 15, .data$sd)) |>
+      dplyr::mutate(sd = dplyr::if_else(.data$sd == 0, 3, .data$sd)) |>
+      dplyr::select(-min_val, -max_val)
+    return(result)
+  }
+
+  tvt_zipcode <- function(text_fields) {
+    result <-
+      text_fields |>
+      dplyr::filter(grepl("zipcode", .data$text_validation_type)) |>
+      dplyr::mutate(weight = 100)
+    return(result)
+  }
+
+  tvt_phone <- function(text_fields) {
+    result <-
+      text_fields |>
+      dplyr::filter(grepl("phone", .data$text_validation_type)) |>
+      dplyr::mutate(weight = 100)
+    return(result)
+  }
+
   tvt_unsupported <- function(text_fields) {
     result <-
       text_fields |>
@@ -65,8 +150,9 @@ get_long_text_fields <- function(metadata) {
   }
 
   tvt_types <- c(
-    "tvt_na",
-    "tvt_unsupported"
+    "tvt_na", "tvt_datetime", "tvt_unsupported", "tvt_date",
+    "tvt_email", "tvt_integer", "tvt_number", "tvt_zipcode",
+    "tvt_phone"
   )
 
   process_one_text_validation_type <- function(my_tvt, df) {
