@@ -7,14 +7,14 @@ long_fields_and_responses <- readRDS(
 output <- get_one_rectangle_of_values(
   one_record_id = 1,
   record_id_name = "record_id",
-  forms_to_fill = "tests",
+  forms_to_fill = "form_1",
   long_fields_and_responses
 )
 
 output_with_special_record_id <- get_one_rectangle_of_values(
   one_record_id = 1,
   record_id_name = "special_id",
-  forms_to_fill = "tests",
+  forms_to_fill = "form_1",
   long_fields_and_responses
 )
 
