@@ -146,6 +146,10 @@ get_long_text_field_values <- function(long_text_fields) {
       process_one_text_validation_type,
       long_text_fields |> dplyr::filter(.data$field_type == "text")
     ) |>
+    # get rid of empty data frames in the list output
+    purrr::keep(~ nrow(.x) > 0) |>
+    # add a minimal empty data frame in case there are no list elements left
+    dplyr::tibble(field_name = NA_character_, value = NA_character_) |> dplyr::filter(F) |>
     dplyr::bind_rows()
 
   result <- text_field_values |>
