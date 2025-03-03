@@ -42,4 +42,8 @@ testthat::test_that("get_long_text_field_values returns a value field for date a
   testthat::expect_true(all(date_values != "") & all(datetime_values != ""))
 })
 
+# test that every value is a character
+testthat::test_that("get_long_text_field_values returns a character vector", {
+  testthat::expect_true(all(sapply(output$value, is.character)))
+})
 
