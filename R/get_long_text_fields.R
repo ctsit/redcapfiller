@@ -43,6 +43,10 @@ get_long_text_fields <- function(metadata) {
       "text_validation_max"
     )) |>
     dplyr::rename(text_validation_type = "text_validation_type_or_show_slider_number") |>
+    dplyr::mutate(
+      text_validation_min = as.character(text_validation_min),
+      text_validation_max = as.character(text_validation_max)
+    ) |>
     dplyr::mutate(tvt = dplyr::case_when(
       is.na(.data$text_validation_type) ~ "tvt_na",
       grepl("^datetime.*", .data$text_validation_type) ~ "tvt_datetime",
@@ -77,7 +81,22 @@ get_long_text_fields <- function(metadata) {
     result <-
       text_fields |>
       dplyr::filter(grepl("^datetime.*", .data$text_validation_type)) |>
-      dplyr::mutate(origin_function = "lubridate::now()", bias = 3600 * 24)
+      dplyr::mutate(
+        text_validation_min = dplyr::case_when(
+          grepl("^\\[.*\\]$", .data$text_validation_min) ~ NA_character_,
+          grepl("^-?[0-9]+(\\.[0-9]+)?$", .data$text_validation_min) ~ .data$text_validation_min,
+          grepl("^\\d{4}-\\d{2}-\\d{2}$", .data$text_validation_min) ~ as.character(.data$text_validation_min),
+          TRUE ~ NA_character_
+        ),
+        text_validation_max = dplyr::case_when(
+          grepl("^\\[.*\\]$", .data$text_validation_max) ~ NA_character_,
+          grepl("^-?[0-9]+(\\.[0-9]+)?$", .data$text_validation_max) ~ .data$text_validation_max,
+          grepl("^\\d{4}-\\d{2}-\\d{2}$", .data$text_validation_max) ~ as.character(.data$text_validation_max),
+          TRUE ~ NA_character_
+        ),
+        origin_function = "lubridate::now()",
+        bias = 3600 * 24
+      )
     return(result)
   }
 
@@ -85,7 +104,22 @@ get_long_text_fields <- function(metadata) {
     result <-
       text_fields |>
       dplyr::filter(grepl("^date_", .data$text_validation_type)) |>
-      dplyr::mutate(origin_function = "lubridate::today()", bias = 36 * 24)
+      dplyr::mutate(
+        text_validation_min = dplyr::case_when(
+          grepl("^\\[.*\\]$", .data$text_validation_min) ~ NA_character_,
+          grepl("^-?[0-9]+(\\.[0-9]+)?$", .data$text_validation_min) ~ .data$text_validation_min,
+          grepl("^\\d{4}-\\d{2}-\\d{2}$", .data$text_validation_min) ~ as.character(.data$text_validation_min),
+          TRUE ~ NA_character_
+        ),
+        text_validation_max = dplyr::case_when(
+          grepl("^\\[.*\\]$", .data$text_validation_max) ~ NA_character_,
+          grepl("^-?[0-9]+(\\.[0-9]+)?$", .data$text_validation_max) ~ .data$text_validation_max,
+          grepl("^\\d{4}-\\d{2}-\\d{2}$", .data$text_validation_max) ~ as.character(.data$text_validation_max),
+          TRUE ~ NA_character_
+        ),
+        origin_function = "lubridate::today()",
+        bias = 36 * 24
+      )
     return(result)
   }
 
@@ -104,6 +138,7 @@ get_long_text_fields <- function(metadata) {
         sd = dplyr::if_else(sd == 0, 3, sd)
       ) |>
       dplyr::select(-min_val, -max_val)
+    return(result)
   }
 
   tvt_number <- function(text_fields) {
@@ -120,8 +155,10 @@ get_long_text_fields <- function(metadata) {
         mean = (min_val + max_val) / 2,
         sd = (max_val - min_val) / 6
       ) |>
-      dplyr::mutate(mean = dplyr::if_else(.data$mean == 0, 15, .data$sd)) |>
-      dplyr::mutate(sd = dplyr::if_else(.data$sd == 0, 3, .data$sd)) |>
+      dplyr::mutate(
+        mean = dplyr::if_else(mean == 0, 15, mean),
+        sd = dplyr::if_else(sd == 0, 3, sd)
+      ) |>
       dplyr::select(-min_val, -max_val)
     return(result)
   }
