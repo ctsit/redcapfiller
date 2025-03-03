@@ -44,8 +44,8 @@ get_long_text_fields <- function(metadata) {
     )) |>
     dplyr::rename(text_validation_type = "text_validation_type_or_show_slider_number") |>
     dplyr::mutate(
-      text_validation_min = as.character(text_validation_min),
-      text_validation_max = as.character(text_validation_max)
+      text_validation_min = as.character(.data$text_validation_min),
+      text_validation_max = as.character(.data$text_validation_max)
     ) |>
     dplyr::mutate(tvt = dplyr::case_when(
       is.na(.data$text_validation_type) ~ "tvt_na",
@@ -130,14 +130,14 @@ get_long_text_fields <- function(metadata) {
       dplyr::mutate(
         min_val = ifelse(!is.na(as.numeric(.data$text_validation_min)), as.numeric(.data$text_validation_min), 0),
         max_val = ifelse(!is.na(as.numeric(.data$text_validation_max)), as.numeric(.data$text_validation_max), 0),
-        mean = (min_val + max_val) / 2,
-        sd = (max_val - min_val) / 6
+        mean = (.data$min_val + .data$max_val) / 2,
+        sd = (.data$max_val - .data$min_val) / 6
       ) |>
       dplyr::mutate(
-        mean = dplyr::if_else(mean == 0, 15, mean),
-        sd = dplyr::if_else(sd == 0, 3, sd)
+        mean = dplyr::if_else(.data$mean == 0, 15, .data$mean),
+        sd = dplyr::if_else(.data$sd == 0, 3, .data$sd)
       ) |>
-      dplyr::select(-min_val, -max_val)
+      dplyr::select(-.data$min_val, -.data$max_val)
     return(result)
   }
 
@@ -150,16 +150,16 @@ get_long_text_fields <- function(metadata) {
         max_val = as.numeric(.data$text_validation_max)
       ) |>
       dplyr::mutate(
-        min_val = dplyr::coalesce(min_val, 0),
-        max_val = dplyr::coalesce(max_val, 0),
-        mean = (min_val + max_val) / 2,
-        sd = (max_val - min_val) / 6
+        min_val = dplyr::coalesce(.data$min_val, 0),
+        max_val = dplyr::coalesce(.data$max_val, 0),
+        mean = (.data$min_val + .data$max_val) / 2,
+        sd = (.data$max_val - .data$min_val) / 6
       ) |>
       dplyr::mutate(
-        mean = dplyr::if_else(mean == 0, 15, mean),
-        sd = dplyr::if_else(sd == 0, 3, sd)
+        mean = dplyr::if_else(.data$mean == 0, 15, .data$mean),
+        sd = dplyr::if_else(.data$sd == 0, 3, .data$sd)
       ) |>
-      dplyr::select(-min_val, -max_val)
+      dplyr::select(-.data$min_val, -.data$max_val)
     return(result)
   }
 

@@ -36,7 +36,7 @@ get_long_text_field_values <- function(long_text_fields) {
         current_time <- eval(parse(text = .data$origin_function))
         # Generate random times around current time
         times <- as.POSIXct(
-          rnorm(
+          stats::rnorm(
             n = nrow(df),
             mean = as.numeric(current_time),
             sd = mean(.data$bias, na.rm = TRUE) # Using summarized value
@@ -56,7 +56,7 @@ get_long_text_field_values <- function(long_text_fields) {
         current_date <- eval(parse(text = .data$origin_function))
         # Generate random dates around current date
         dates <- as.Date(
-          rnorm(
+          stats::rnorm(
             n = nrow(df),
             mean = as.numeric(current_date),
             sd = mean(.data$bias, na.rm = TRUE) # Using summarized value
@@ -84,7 +84,7 @@ get_long_text_field_values <- function(long_text_fields) {
     b <- as.numeric(b)
     a <- ifelse(is.na(a), -Inf, a)
     b <- ifelse(is.na(b), Inf, b)
-    qnorm(runif(n, pnorm(a, mean, sd), pnorm(b, mean, sd)), mean, sd)
+    stats::qnorm(stats::runif(n, stats::pnorm(a, mean, sd), stats::pnorm(b, mean, sd)), mean, sd)
   }
 
   tvt_integer <- function(df) {
@@ -93,7 +93,7 @@ get_long_text_field_values <- function(long_text_fields) {
       dplyr::mutate(
         value = as.character(round(rtnorm(
           n = length(.data$field_name), mean = .data$mean, sd = .data$sd,
-          a = text_validation_min, b = text_validation_max
+          a = .data$text_validation_min, b = .data$text_validation_max
         )))
       )
   }
@@ -104,7 +104,7 @@ get_long_text_field_values <- function(long_text_fields) {
       dplyr::mutate(
         value = as.character(rtnorm(
           n = length(.data$field_name), mean = .data$mean, sd = .data$sd,
-          a = text_validation_min, b = text_validation_max
+          a = .data$text_validation_min, b = .data$text_validation_max
         ))
       )
   }
