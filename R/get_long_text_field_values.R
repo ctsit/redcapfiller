@@ -34,14 +34,13 @@ get_long_text_field_values <- function(long_text_fields) {
     df |>
       dplyr::filter(.data$tvt == "tvt_datetime") |>
       dplyr::mutate(value = {
-        # Get current time as the mean
-        current_time <- eval(parse(text = .data$origin_function))
-        # Generate random times around current time
+        anchor_time <- eval(parse(text = .data$origin_function))
+        # Generate random times around anchor_time
         times <- as.POSIXct(
           stats::rnorm(
             n = nrow(df),
-            mean = as.numeric(current_time),
-            sd = mean(.data$bias, na.rm = TRUE) # Using summarized value
+            mean = as.numeric(anchor_time),
+            sd = .data$sd # Using summarized value
           ),
           origin = "1970-01-01"
         )
@@ -54,14 +53,13 @@ get_long_text_field_values <- function(long_text_fields) {
     df |>
       dplyr::filter(.data$tvt == "tvt_date") |>
       dplyr::mutate(value = {
-        # Get current date as the mean
-        current_date <- eval(parse(text = .data$origin_function))
-        # Generate random dates around current date
+        anchor_date <- eval(parse(text = .data$origin_function))
+        # Generate random dates around anchor date
         dates <- as.Date(
           stats::rnorm(
             n = nrow(df),
-            mean = as.numeric(current_date),
-            sd = mean(.data$bias, na.rm = TRUE) # Using summarized value
+            mean = as.numeric(anchor_date),
+            sd = .data$sd
           ),
           origin = "1970-01-01"
         )
@@ -104,10 +102,10 @@ get_long_text_field_values <- function(long_text_fields) {
     df |>
       dplyr::filter(.data$tvt == "tvt_number") |>
       dplyr::mutate(
-        value = as.character(rtnorm(
+        value = as.character(round(rtnorm(
           n = length(.data$field_name), mean = .data$mean, sd = .data$sd,
           a = .data$text_validation_min, b = .data$text_validation_max
-        ))
+        ), digits = 2))
       )
   }
 
