@@ -137,7 +137,7 @@ get_long_text_fields <- function(metadata) {
         mean = dplyr::if_else(.data$mean == 0, 15, .data$mean),
         sd = dplyr::if_else(.data$sd == 0, 3, .data$sd)
       ) |>
-      dplyr::select(-min_val, -max_val)
+      dplyr::select(-"min_val", -"max_val")
     return(result)
   }
 
@@ -159,7 +159,7 @@ get_long_text_fields <- function(metadata) {
         mean = dplyr::if_else(.data$mean == 0, 15, .data$mean),
         sd = dplyr::if_else(.data$sd == 0, 3, .data$sd)
       ) |>
-      dplyr::select(-min_val, -max_val)
+      dplyr::select(-"min_val", -"max_val")
     return(result)
   }
 

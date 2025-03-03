@@ -9,6 +9,8 @@
 #' @return a long dataframe of text field values with one row for each value set.
 #' @export
 #'
+#' @importFrom lubridate today now
+#'
 #' @examples
 #' \dontrun{
 #' get_long_text_field_values(long_text_fields)
