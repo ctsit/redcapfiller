@@ -19,19 +19,20 @@ Copy [proof_of_concept.R](https://github.com/ctsit/redcapfiller/blob/main/proof_
 
 ### Limitations
 
-REDCap Filler does not yet understand all the dimensions of a modern REDCap project. It can fill the categorical fields. It can fill unvalidated text fields. It ignores all other field types and will not attempt to fill them. It doesn't even know how to fill a date field. :-( Filler only knows how to fill classic projects without repeating forms or events. It does not honor form display logic and ignores all fields governed by branching logic.
+REDCap Filler does not yet understand all the dimensions of a modern REDCap project. It can fill the categorical fields. It can fill unvalidated text field and the text validation types date, datetime, email, integer, number, phone, and zipcode. It ignores all other field types and validation types and will not attempt to fill them. Filler only knows how to fill classic projects without repeating forms or events. It does not honor form display logic and ignores all fields governed by branching logic.
 
-Focusing more on what Filler _can_ do, the first release milestone will support these features:
+Focusing more on what Filler _can_ or _will_ do, the first release milestone will support these features:
 
-- Use the REDCap data dictionary as the primary input. Add a few parameters to define record count and forms to fill
+- Use the REDCap data dictionary as the primary input. Add a few parameters to define record count and forms to fill.
 - Work on classic projects with no repeating objects.
 - Fill the forms named in a vector of form names.
-- Fill out every field on the named forms as long as there is no BL constraint.
+- Fill out every field on the named forms as long as there is no BL constraint. (Note: Timeline constraints might delay some text validation types)
 - Do not violate any data constraints.
 - Inject a simple default randomness wherever practicable.
 - Set the form completed fields to green.
 - Use the REDCap API to read the data dictionary and write the data.
 - Provide a uniform distribution on categorical fields.
+- Provide normal distribution on numeric and date fields.
 
 ### Futures
 
@@ -39,6 +40,7 @@ This project aims to populate complex REDCap projects using the project design. 
 
 1. Populate all fields in a classic project with no repeating objects, ignoring fields with BL constraints and completely ignoring FDL.
 2. Add support for longitudinal projects
+3. Complete any text validation types missing in the first release.
 3. Add support for repeating events and repeating forms.
 4. Allow non-uniform distribution of categorical fields. Allow non-default distributions on ranged fields.
 5. Allow inter-record and intra-record date offsets.

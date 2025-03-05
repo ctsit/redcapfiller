@@ -1,4 +1,4 @@
-metadata_file <- testthat::test_path("get_long_text_fields", "metadata.csv")
+metadata_file <- testthat::test_path("shared_testdata", "metadata.csv")
 metadata <- readr::read_csv(metadata_file)
 
 output <- get_long_text_fields(metadata)
@@ -29,4 +29,13 @@ testthat::test_that("get_long_text_fields: weights are balanced", {
     dplyr::summarise(balanced = (min(weight) == max(weight))) |>
     dplyr::distinct(balanced) |>
     dplyr::pull(balanced))
+})
+
+testthat::test_that("get_long_text_fields: origin_function and sd columns are present", {
+  datetime_support_columns <- c("origin_function", "sd")
+  testthat::expect_equal(
+    output |>
+      dplyr::select(dplyr::all_of(datetime_support_columns)) |> names(),
+    datetime_support_columns
+  )
 })
