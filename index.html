@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">redcapfiller</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0.9002</span>
       </span>
     </div>
 
@@ -91,18 +91,19 @@
 <div class="section level3">
 <h3 id="limitations">Limitations<a class="anchor" aria-label="anchor" href="#limitations"></a>
 </h3>
-<p>REDCap Filler does not yet understand all the dimensions of a modern REDCap project. It can fill the categorical fields. It can fill unvalidated text fields. It ignores all other field types and will not attempt to fill them. It doesn’t even know how to fill a date field. :-( Filler only knows how to fill classic projects without repeating forms or events. It does not honor form display logic and ignores all fields governed by branching logic.</p>
-<p>Focusing more on what Filler <em>can</em> do, the first release milestone will support these features:</p>
+<p>REDCap Filler does not yet understand all the dimensions of a modern REDCap project. It can fill the categorical fields. It can fill unvalidated text field and the text validation types date, datetime, email, integer, number, phone, and zipcode. It ignores all other field types and validation types and will not attempt to fill them. Filler only knows how to fill classic projects without repeating forms or events. It does not honor form display logic and ignores all fields governed by branching logic.</p>
+<p>Focusing more on what Filler <em>can</em> or <em>will</em> do, the first release milestone will support these features:</p>
 <ul>
-<li>Use the REDCap data dictionary as the primary input. Add a few parameters to define record count and forms to fill</li>
+<li>Use the REDCap data dictionary as the primary input. Add a few parameters to define record count and forms to fill.</li>
 <li>Work on classic projects with no repeating objects.</li>
 <li>Fill the forms named in a vector of form names.</li>
-<li>Fill out every field on the named forms as long as there is no BL constraint.</li>
+<li>Fill out every field on the named forms as long as there is no BL constraint. (Note: Timeline constraints might delay some text validation types)</li>
 <li>Do not violate any data constraints.</li>
 <li>Inject a simple default randomness wherever practicable.</li>
 <li>Set the form completed fields to green.</li>
 <li>Use the REDCap API to read the data dictionary and write the data.</li>
 <li>Provide a uniform distribution on categorical fields.</li>
+<li>Provide normal distribution on numeric and date fields.</li>
 </ul>
 </div>
 <div class="section level3">
@@ -112,6 +113,7 @@
 <ol style="list-style-type: decimal">
 <li>Populate all fields in a classic project with no repeating objects, ignoring fields with BL constraints and completely ignoring FDL.</li>
 <li>Add support for longitudinal projects</li>
+<li>Complete any text validation types missing in the first release.</li>
 <li>Add support for repeating events and repeating forms.</li>
 <li>Allow non-uniform distribution of categorical fields. Allow non-default distributions on ranged fields.</li>
 <li>Allow inter-record and intra-record date offsets.</li>

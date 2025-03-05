@@ -8,6 +8,10 @@
 <url><loc>/news/index.html</loc></url>
 <url><loc>/reference/get_long_categorical_field_response_values.html</loc></url>
 <url><loc>/reference/get_long_categorical_field_responses.html</loc></url>
+<url><loc>/reference/get_long_notes_field_values.html</loc></url>
+<url><loc>/reference/get_long_notes_fields.html</loc></url>
+<url><loc>/reference/get_long_slider_field_values.html</loc></url>
+<url><loc>/reference/get_long_slider_fields.html</loc></url>
 <url><loc>/reference/get_long_text_field_values.html</loc></url>
 <url><loc>/reference/get_long_text_fields.html</loc></url>
 <url><loc>/reference/get_one_rectangle_of_values.html</loc></url>
