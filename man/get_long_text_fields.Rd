@@ -25,7 +25,8 @@ a dataframe with these columns
 }
 }
 \description{
-Given a REDCap data dictionary, enumerate every text field in that data dictionary and return a dataset with default weights
+Given a REDCap data dictionary, enumerate every text field in that data dictionary
+and return a dataset with default weights
 }
 \examples{
 \dontrun{

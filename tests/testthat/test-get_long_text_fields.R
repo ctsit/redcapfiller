@@ -31,3 +31,11 @@ testthat::test_that("get_long_text_fields: weights are balanced", {
     dplyr::pull(balanced))
 })
 
+testthat::test_that("get_long_text_fields: origin_function and sd columns are present", {
+  datetime_support_columns <- c("origin_function", "sd")
+  testthat::expect_equal(
+    output |>
+      dplyr::select(dplyr::all_of(datetime_support_columns)) |> names(),
+    datetime_support_columns
+  )
+})

@@ -31,3 +31,19 @@ testthat::test_that("get_long_text_field_values returns a varying vector of valu
   ))
 })
 
+testthat::test_that("get_long_text_field_values returns a value field for date and datetime fields", {
+  date_fields <- output$field_name[grepl("^date.", output$field_name)]
+  datetime_fields <- output$field_name[grepl("^datetime.", output$field_name)]
+
+  date_values <- output$value[output$field_name %in% date_fields]
+  datetime_values <- output$value[output$field_name %in% datetime_fields]
+
+  testthat::expect_true(length(date_fields) > 0 | length(datetime_fields) > 0)
+  testthat::expect_true(all(date_values != "") & all(datetime_values != ""))
+})
+
+# test that every value is a character
+testthat::test_that("get_long_text_field_values returns a character vector", {
+  testthat::expect_true(all(sapply(output$value, is.character)))
+})
+
