@@ -41,6 +41,7 @@ Imports:
     lubridate,
     purrr,
     rlang,
-    tidyr
+    tidyr,
+    checkmate
 RoxygenNote: 7.3.2
 VignetteBuilder: knitr
