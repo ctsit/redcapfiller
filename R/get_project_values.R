@@ -40,7 +40,6 @@ get_project_values <- function(
 
   forms_to_fill <- metadata |>
   dplyr::distinct(.data$form_name) |>
-  dplyr::filter(!.data$form_name %in% c("randomization")) |>
   dplyr::pull(.data$form_name)
 
   # Exclude record_id, descriptive, calc, file, and fields hidden by branching logic,
