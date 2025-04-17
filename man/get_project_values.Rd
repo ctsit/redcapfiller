@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_project_values.R
 \name{get_project_values}
 \alias{get_project_values}
-\title{Get Project Values: Separate Data Frames for Each Event (or only one for classic)}
+\title{Get Project Values}
 \usage{
 get_project_values(
   redcap_uri,
@@ -24,5 +24,5 @@ get_project_values(
 List of data frames (one per event, or just one for classic projects)
 }
 \description{
-Get Project Values: Separate Data Frames for Each Event (or only one for classic)
+Get Project Values
 }
