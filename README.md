@@ -14,12 +14,12 @@ remotes::install_github("ctsit/redcapfiller")
 
 ### Using REDCap Filler
 
-Copy [proof_of_concept.R](https://github.com/ctsit/redcapfiller/blob/main/proof_of_concept.R) to and adapt it to your needs. It will add 5 records to a classic REDCap project identified by `filler_demo_pid` whose credentials are stored in the CSV named in `path_credential` It will fill the variables it knows how to fill.  For more details on how to set up this script, see [Demonstration and Testing procedure](https://ctsit.github.io/redcapfiller/articles/demonstration_and_testing.html)
+Copy [proof_of_concept.R](https://github.com/ctsit/redcapfiller/blob/main/proof_of_concept.R) to and adapt it to your needs. It will add 6 records to a classic or longitudional REDCap project identified by `filler_demo_pid` whose credentials are stored in the CSV named in `path_credential` It will fill the variables it knows how to fill. For more details on how to set up this script, see [Demonstration and Testing procedure](https://ctsit.github.io/redcapfiller/articles/demonstration_and_testing.html)
 
 
 ### Limitations
 
-REDCap Filler does not yet understand all the dimensions of a modern REDCap project. It can fill the categorical fields. It can fill unvalidated text field and the text validation types date, datetime, email, integer, number, phone, and zipcode. It ignores all other field types and validation types and will not attempt to fill them. Filler only knows how to fill classic projects without repeating forms or events. It does not honor form display logic and ignores all fields governed by branching logic.
+REDCap Filler does not yet understand all the dimensions of a modern REDCap project. It can fill the categorical fields. It can fill unvalidated text field and the text validation types date, datetime, email, integer, number, phone, and zipcode. It ignores all other field types and validation types and will not attempt to fill them. Filler can fill classic and longitudinal projects, but not if they have repeating forms or events. It does not honor form display logic and ignores all fields governed by branching logic.
 
 *   Works on **classic projects** and **longitudinal projects**.
 *   Uses the REDCap API to read the data dictionary and write the generated data.
@@ -27,6 +27,7 @@ REDCap Filler does not yet understand all the dimensions of a modern REDCap proj
 *   Fills categorical fields (providing a uniform random distribution).
 *   Fills unvalidated text fields and fields with common text validation types: date, datetime, email, integer, number, phone, and zipcode.
     *   Provides random-normal distributions for numeric and date fields.
+    *   Uses "Lorem ipsum" text for non-validated text fields. 
     *   Injects simple default randomness where practicable for other types.
 *   Sets the form completed fields to 'Complete' (green).
 *   Aims to not violate basic data constraints defined in the dictionary (e.g., validation types, ranges where applicable).
@@ -36,7 +37,7 @@ REDCap Filler does not yet understand all the dimensions of a modern REDCap proj
 *   Does not yet understand or support **repeating instruments** or **repeating events**.
 *   Ignores fields governed by **Branching Logic (BL)** and will not attempt to fill them.
 *   Does not evaluate **Form Display Logic (FDL)**.
-*   May not yet support *all* possible field types or validation types beyond those listed above.
+*   Does not yet support *all* text validation types beyond those listed above.
 
 ### Futures
 
