@@ -28,6 +28,11 @@ generated_values <- get_project_values(
   token = credentials$token
 )
 
+# Use checkmate to validate the generated data and show a message if it fails.
+if (!checkmate::test_list(generated_values)) {
+  stop("No data was generated..")
+}
+
 # Write data to REDCap
 purrr::walk(
   generated_values,
