@@ -27,12 +27,14 @@ Authors@R: c(
 Description: Fill a REDCap project with generated data based on the project design and a minimal set of inputs.
 License: Apache License (>= 2)
 Encoding: UTF-8
-LazyData: true
+Depends:
+    R (>= 3.5.0)
 Suggests:
     knitr,
     readr,
     rmarkdown,
     stringr,
+    mockery,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
@@ -41,6 +43,8 @@ Imports:
     lubridate,
     purrr,
     rlang,
-    tidyr
+    tidyr,
+    checkmate,
+    REDCapR
 RoxygenNote: 7.3.2
 VignetteBuilder: knitr

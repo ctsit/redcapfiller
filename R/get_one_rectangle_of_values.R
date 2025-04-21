@@ -5,6 +5,7 @@
 #' @param forms_to_fill the forms to fill for this rectangle
 #' @param long_fields_and_responses the output of `get_long_*_fields` and
 #'   `get_long_categorical_field_responses_responses` functions
+#' @param event_name event name to include as a column after record_id; default NA_character_. If NA, omit column for compatibility.
 #'
 #' @returns a rectangle of data with appropriate REDCap identifiers ready to write to REDCap
 #' @export
@@ -18,14 +19,28 @@ get_one_rectangle_of_values <- function(
     one_record_id = 1,
     record_id_name,
     forms_to_fill,
-    long_fields_and_responses) {
-  # Build tibble of static REDCap identifiers
+    long_fields_and_responses,
+    event_name = NA_character_) {
   redcap_identifiers <- dplyr::tibble(
     record_id = one_record_id
   )
 
   # fix the first column name
   names(redcap_identifiers) <- record_id_name
+
+  # Optionally add event_name as second column if provided
+  if (!is.na(event_name)) {
+    event_col <- dplyr::tibble(event_name = event_name)
+    # Rename the column to "redcap_event_name" for clarity
+    names(event_col) <- "redcap_event_name"
+    # Bind 'event_col' as second column after record_id
+    redcap_identifiers <- dplyr::bind_cols(
+      redcap_identifiers,
+      event_col
+    )
+    # Reorder columns so event_name is directly after record_id_name
+    redcap_identifiers <- redcap_identifiers[, c(1, 2)]
+  }
 
   value_getter_functions <- c(
     "get_long_categorical_field_response_values",
@@ -39,7 +54,6 @@ get_one_rectangle_of_values <- function(
   }
 
   # pick values for one record on one event
-  #    ...by binding the output of each field_type / field_validation function
   all_responses <-
     purrr::map(
       value_getter_functions,
@@ -52,13 +66,14 @@ get_one_rectangle_of_values <- function(
   # prefix responses with redcap fields
   long_result <- dplyr::bind_cols(
     redcap_identifiers,
-    # later we will add redcap_event_name, redcap_repeat_instrument, dag_name, etc. where appropriate
     all_responses
   )
 
+  id_cols <- names(redcap_identifiers)
+
   wide_result <- long_result |>
     tidyr::pivot_wider(
-      id_cols = dplyr::any_of(names(redcap_identifiers)),
+      id_cols = dplyr::any_of(id_cols),
       names_from = "field_name",
       values_from = "value"
     )
