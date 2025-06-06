@@ -20,6 +20,9 @@ jobs:
       group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      DEMOGRAPHICS_TOKEN: ${{ secrets.DEMOGRAPHICS_TOKEN }}
+      LONGITUDINAL_TOKEN: ${{ secrets.LONGITUDINAL_TOKEN }}
+      REDCAP_URI: ${{ vars.REDCAP_URI }}
     permissions:
       contents: write
     steps:
@@ -35,6 +38,12 @@ jobs:
         with:
           extra-packages: any::pkgdown, local::.
           needs: website
+      - name: Create and populate .Renviron file
+        run: |
+          echo DEMOGRAPHICS_TOKEN="$DEMOGRAPHICS_TOKEN" >> ~/.Renviron
+          echo LONGITUDINAL_TOKEN="$LONGITUDINAL_TOKEN" >> ~/.Renviron
+          echo REDCAP_URI="$REDCAP_URI" >> ~/.Renviron
+        shell: bash
 
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
