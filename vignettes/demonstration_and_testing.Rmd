@@ -2,7 +2,7 @@
 title: "Demonstration and Testing"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{demonstration_and_testing}
+  %\VignetteIndexEntry{Demonstration and Testing}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
