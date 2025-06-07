@@ -20,4 +20,4 @@ metadata <- REDCapR::redcap_metadata_read(
   redcap_uri = credentials$redcap_uri
 )$data
 
-metadata |> readr::write_csv(testthat::test_path("get_long_text_fields", "metadata.csv"), na = "")
+metadata |> readr::write_csv(testthat::test_path("get_text_fields", "metadata.csv"), na = "")

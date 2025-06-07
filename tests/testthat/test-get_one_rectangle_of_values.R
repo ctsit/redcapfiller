@@ -1,4 +1,4 @@
-long_fields_and_responses <- readRDS(testthat::test_path("get_one_rectangle_of_values", "input.rds")) |>
+fields_and_responses <- readRDS(testthat::test_path("get_one_rectangle_of_values", "input.rds")) |>
   # filter out the record_id row because we are generating it in these tests
   dplyr::filter(.data$field_name != "record_id")
 
@@ -7,14 +7,14 @@ output <- get_one_rectangle_of_values(
   one_record_id = 1,
   record_id_name = "record_id",
   forms_to_fill = "form_1",
-  long_fields_and_responses=long_fields_and_responses
+  fields_and_responses=fields_and_responses
 )
 
 output_with_special_record_id <- get_one_rectangle_of_values(
   one_record_id = 1,
   record_id_name = "special_id",
   forms_to_fill = "form_1",
-  long_fields_and_responses=long_fields_and_responses
+  fields_and_responses=fields_and_responses
 )
 
 # Output with event_name column
@@ -22,7 +22,7 @@ output_with_event <- get_one_rectangle_of_values(
   one_record_id = 1,
   record_id_name = "record_id",
   forms_to_fill = "form_1",
-  long_fields_and_responses,
+  fields_and_responses,
   event_name = "visit_1_arm_1"
 )
 
@@ -30,7 +30,7 @@ output_with_special_id_and_event <- get_one_rectangle_of_values(
   one_record_id = 1,
   record_id_name = "special_id",
   forms_to_fill = "form_1",
-  long_fields_and_responses,
+  fields_and_responses,
   event_name = "visit_1_arm_1"
 )
 

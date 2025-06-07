@@ -17,9 +17,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' notes_fields <- get_long_notes_fields(metadata_to_populate)
+#' notes_fields <- get_notes_fields(metadata_to_populate)
 #' }
-get_long_notes_fields <- function(metadata) {
+get_notes_fields <- function(metadata) {
   notes_fields <-
     metadata |>
     # filter to include only notes fields

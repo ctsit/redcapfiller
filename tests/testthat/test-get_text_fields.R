@@ -1,9 +1,9 @@
 metadata_file <- testthat::test_path("shared_testdata", "metadata.csv")
 metadata <- readr::read_csv(metadata_file)
 
-output <- get_long_text_fields(metadata)
+output <- get_text_fields(metadata)
 
-testthat::test_that("get_long_text_fields: processes only text fields", {
+testthat::test_that("get_text_fields: processes only text fields", {
   testthat::expect_equal(
     output |>
       dplyr::distinct(field_type) |>
@@ -12,7 +12,7 @@ testthat::test_that("get_long_text_fields: processes only text fields", {
   )
 })
 
-testthat::test_that("get_long_text_fields: returns the validation type columns", {
+testthat::test_that("get_text_fields: returns the validation type columns", {
   text_validation_columns <- c(
     "text_validation_type",
     "text_validation_min",
@@ -24,14 +24,14 @@ testthat::test_that("get_long_text_fields: returns the validation type columns",
   )
 })
 
-testthat::test_that("get_long_text_fields: weights are balanced", {
+testthat::test_that("get_text_fields: weights are balanced", {
   testthat::expect_true(output |>
     dplyr::summarise(balanced = (min(weight) == max(weight))) |>
     dplyr::distinct(balanced) |>
     dplyr::pull(balanced))
 })
 
-testthat::test_that("get_long_text_fields: origin_function and sd columns are present", {
+testthat::test_that("get_text_fields: origin_function and sd columns are present", {
   datetime_support_columns <- c("origin_function", "sd")
   testthat::expect_equal(
     output |>

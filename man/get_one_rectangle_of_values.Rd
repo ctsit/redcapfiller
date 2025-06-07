@@ -8,7 +8,7 @@ get_one_rectangle_of_values(
   one_record_id = 1,
   record_id_name,
   forms_to_fill,
-  long_fields_and_responses,
+  fields_and_responses,
   event_name = NA_character_
 )
 }
@@ -19,8 +19,8 @@ get_one_rectangle_of_values(
 
 \item{forms_to_fill}{the forms to fill for this rectangle}
 
-\item{long_fields_and_responses}{the output of `get_long_*_fields` and
-`get_long_categorical_field_responses_responses` functions}
+\item{fields_and_responses}{the output of `get_*_fields` and
+`get_categorical_field_responses_responses` functions}
 
 \item{event_name}{event name to include as a column after record_id; default NA_character_. If NA, omit column for compatibility.}
 }

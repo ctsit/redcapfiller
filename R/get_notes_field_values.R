@@ -2,18 +2,18 @@
 #' @description
 #' Generate lorem ipsum text content for each notes field in the provided metadata
 #'
-#' @param long_notes_fields A dataframe of notes fields from a REDCap data dictionary
-#'   (typically output from `get_long_notes_fields()`)
+#' @param notes_fields A dataframe of notes fields from a REDCap data dictionary
+#'   (typically output from `get_notes_fields()`)
 #'
 #' @return A tall dataframe of notes field content with one row per field
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' notes_responses <- get_long_notes_field_values(notes_fields)
+#' notes_responses <- get_notes_field_values(notes_fields)
 #' }
-get_long_notes_field_values <- function(long_notes_fields) {
-  notes_responses <- long_notes_fields |>
+get_notes_field_values <- function(notes_fields) {
+  notes_responses <- notes_fields |>
     # Ensure we're only working with notes fields
     dplyr::filter(.data$field_type == "notes") |>
     # Generate lorem ipsum text for each field

@@ -20,6 +20,6 @@ metadata <- REDCapR::redcap_metadata_read(
   redcap_uri = credentials$redcap_uri
 )$data
 
-long_text_fields <- metadata |> get_long_text_fields()
+text_fields <- metadata |> get_text_fields()
 
-long_text_fields |> saveRDS(testthat::test_path("get_long_text_field_values", "input.rds"))
+text_fields |> saveRDS(testthat::test_path("get_text_field_values", "input.rds"))

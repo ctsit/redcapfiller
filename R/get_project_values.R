@@ -70,25 +70,25 @@ get_project_values <- function(
   first_id <- max_existing_id + 1
   record_ids <- seq(first_id, first_id + number_of_records_to_populate - 1)
 
-  long_categorical_field_responses <- get_long_categorical_field_responses(metadata_to_populate)
-  long_text_fields <- get_long_text_fields(metadata_to_populate)
-  long_slider_fields <- get_long_slider_fields(metadata_to_populate)
-  long_notes_fields <- get_long_notes_fields(metadata_to_populate)
-  long_fields_and_responses <- dplyr::bind_rows(
-    long_categorical_field_responses,
-    long_text_fields,
-    long_slider_fields,
-    long_notes_fields
+  categorical_field_responses <- get_categorical_field_responses(metadata_to_populate)
+  text_fields <- get_text_fields(metadata_to_populate)
+  slider_fields <- get_slider_fields(metadata_to_populate)
+  notes_fields <- get_notes_fields(metadata_to_populate)
+  fields_and_responses <- dplyr::bind_rows(
+    categorical_field_responses,
+    text_fields,
+    slider_fields,
+    notes_fields
   )
 
   # Helper for generating all rows for a single event (or classic project)
-  get_all_rows_in_rectangle <- function(record_ids, record_id_name, forms_to_fill, long_fields_and_responses, event_name = NA_character_) {
+  get_all_rows_in_rectangle <- function(record_ids, record_id_name, forms_to_fill, fields_and_responses, event_name = NA_character_) {
     purrr::map_dfr(
       record_ids,
       get_one_rectangle_of_values,
       record_id_name = record_id_name,
       forms_to_fill = forms_to_fill,
-      long_fields_and_responses = long_fields_and_responses,
+      fields_and_responses = fields_and_responses,
       event_name = event_name
     )
   }
@@ -130,7 +130,7 @@ get_project_values <- function(
         record_ids,
         record_id_name,
         forms_to_fill = .y,
-        long_fields_and_responses,
+        fields_and_responses,
         event_name = .x
       )
     )
@@ -140,7 +140,7 @@ get_project_values <- function(
       record_ids,
       record_id_name,
       forms_to_fill,
-      long_fields_and_responses
+      fields_and_responses
     )
     return(list(picked_values))
   }
