@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">redcapfiller</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0.9002</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
       </span>
     </div>
 
@@ -32,7 +32,7 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/demonstration_and_testing.html">Demonstration and Testing</a>
+      <a href="../articles/getting_started.html">Getting started with redcapfiller</a>
     </li>
   </ul></li>
 <li>
@@ -52,19 +52,20 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="0.1.0.9002" id="redcapfiller-0109002-released-tbd">redcapfiller 0.1.0.9002 (released TBD)<a class="anchor" aria-label="anchor" href="#redcapfiller-0109002-released-tbd"></a></h2>
-<ul><li>Supports filling of checkbox, dropdown, radio, yes/no, True/False, sliders, and notes fields on classic projects.</li>
-<li>Supports text fields with these text validation types:
-<ul><li>datetime (all forms)</li>
-<li>date (all forms)</li>
-<li>email</li>
-<li>integer</li>
-<li>number</li>
-<li>phone</li>
-<li>zipcode</li>
-<li>(no validation)</li>
+<h2 class="page-header" data-toc-text="0.1.0" id="redcapfiller-010-released-2025-06-10">redcapfiller 0.1.0 (released 2025-06-10)<a class="anchor" aria-label="anchor" href="#redcapfiller-010-released-2025-06-10"></a></h2>
+<ul><li>Works on <strong>classic projects</strong> and <strong>longitudinal projects</strong>.</li>
+<li>Uses the REDCap API to read the project design and write the generated data.</li>
+<li>Fills categorical fields (providing a uniform random distribution).</li>
+<li>Fills unvalidated text fields and fields with common text validation types: date, datetime, email, integer, number, phone, and zipcode.
+<ul><li>Provides random-normal distributions for numeric and date fields.</li>
+<li>Uses “Lorem ipsum” text for non-validated text fields.</li>
+<li>Injects simple default randomness where practicable for other types.</li>
 </ul></li>
-<li>Provides a <code>proof_of_concept.R</code> script with write-back to a demonstration project.</li>
+<li>Leaves the form completed fields set to ‘Incomplete’ (red).</li>
+<li>Does not violate basic data constraints defined in the data dictionary (e.g., validation types, ranges where applicable).</li>
+<li>Populates specified events in longitudinal projects.</li>
+<li>Fills a specified number of records.</li>
+<li>Authors: @pbchase, @saipavan10-git, @ljwoodley</li>
 </ul></div>
   </div>
 
@@ -80,7 +81,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
       </footer></div>
