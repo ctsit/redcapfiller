@@ -60,10 +60,10 @@ test_that("get_project_values returns correct structure for classic project", {
   stub(get_project_values, "REDCapR::redcap_read", api$redcap_read)
 
   # Patch helpers
-  stub(get_project_values, "get_long_categorical_field_responses", function(...) data.frame())
-  stub(get_project_values, "get_long_text_fields", function(...) data.frame())
-  stub(get_project_values, "get_long_slider_fields", function(...) data.frame())
-  stub(get_project_values, "get_long_notes_fields", function(...) data.frame())
+  stub(get_project_values, "get_categorical_field_responses", function(...) data.frame())
+  stub(get_project_values, "get_text_fields", function(...) data.frame())
+  stub(get_project_values, "get_slider_fields", function(...) data.frame())
+  stub(get_project_values, "get_notes_fields", function(...) data.frame())
   stub(get_project_values, "get_one_rectangle_of_values", function(...) data.frame(record_id = 1, field1 = "foo"))
 
   result <- get_project_values("dummy_uri", "dummy_token", number_of_records_to_populate = 1)
@@ -81,10 +81,10 @@ test_that("get_project_values returns correct structure for longitudinal project
   stub(get_project_values, "REDCapR::redcap_event_read", api$redcap_event_read)
   stub(get_project_values, "REDCapR::redcap_event_instruments", api$redcap_event_instruments)
 
-  stub(get_project_values, "get_long_categorical_field_responses", function(...) data.frame())
-  stub(get_project_values, "get_long_text_fields", function(...) data.frame())
-  stub(get_project_values, "get_long_slider_fields", function(...) data.frame())
-  stub(get_project_values, "get_long_notes_fields", function(...) data.frame())
+  stub(get_project_values, "get_categorical_field_responses", function(...) data.frame())
+  stub(get_project_values, "get_text_fields", function(...) data.frame())
+  stub(get_project_values, "get_slider_fields", function(...) data.frame())
+  stub(get_project_values, "get_notes_fields", function(...) data.frame())
   stub(get_project_values, "get_one_rectangle_of_values", function(...) data.frame(record_id = 1, field1 = "bar"))
 
   result <- get_project_values("dummy_uri", "dummy_token")
@@ -171,10 +171,10 @@ test_that("get_project_values starts record_id after max existing id", {
   stub(get_project_values, "REDCapR::redcap_metadata_read", api$redcap_metadata_read)
   stub(get_project_values, "REDCapR::redcap_read", function(...) list(data = existing))
 
-  stub(get_project_values, "get_long_categorical_field_responses", function(...) data.frame())
-  stub(get_project_values, "get_long_text_fields", function(...) data.frame())
-  stub(get_project_values, "get_long_slider_fields", function(...) data.frame())
-  stub(get_project_values, "get_long_notes_fields", function(...) data.frame())
+  stub(get_project_values, "get_categorical_field_responses", function(...) data.frame())
+  stub(get_project_values, "get_text_fields", function(...) data.frame())
+  stub(get_project_values, "get_slider_fields", function(...) data.frame())
+  stub(get_project_values, "get_notes_fields", function(...) data.frame())
 
   captured_ids <- c()
   stub(get_project_values, "get_one_rectangle_of_values", function(record_id, ...) {
@@ -195,10 +195,10 @@ test_that("get_project_values filters longitudinal events if 'events' is provide
   stub(get_project_values, "REDCapR::redcap_event_read", api$redcap_event_read)
   stub(get_project_values, "REDCapR::redcap_event_instruments", api$redcap_event_instruments)
 
-  stub(get_project_values, "get_long_categorical_field_responses", function(...) data.frame())
-  stub(get_project_values, "get_long_text_fields", function(...) data.frame())
-  stub(get_project_values, "get_long_slider_fields", function(...) data.frame())
-  stub(get_project_values, "get_long_notes_fields", function(...) data.frame())
+  stub(get_project_values, "get_categorical_field_responses", function(...) data.frame())
+  stub(get_project_values, "get_text_fields", function(...) data.frame())
+  stub(get_project_values, "get_slider_fields", function(...) data.frame())
+  stub(get_project_values, "get_notes_fields", function(...) data.frame())
 
   called_events <- c()
   stub(get_project_values, "get_one_rectangle_of_values", function(..., event_name = NA_character_) {
@@ -218,10 +218,10 @@ test_that("get_project_values returns correct number of records per event (longi
   stub(get_project_values, "REDCapR::redcap_event_read", api$redcap_event_read)
   stub(get_project_values, "REDCapR::redcap_event_instruments", api$redcap_event_instruments)
 
-  stub(get_project_values, "get_long_categorical_field_responses", function(...) data.frame())
-  stub(get_project_values, "get_long_text_fields", function(...) data.frame())
-  stub(get_project_values, "get_long_slider_fields", function(...) data.frame())
-  stub(get_project_values, "get_long_notes_fields", function(...) data.frame())
+  stub(get_project_values, "get_categorical_field_responses", function(...) data.frame())
+  stub(get_project_values, "get_text_fields", function(...) data.frame())
+  stub(get_project_values, "get_slider_fields", function(...) data.frame())
+  stub(get_project_values, "get_notes_fields", function(...) data.frame())
   stub(get_project_values, "get_one_rectangle_of_values", function(record_ids, ...) {
     data.frame(record_id = record_ids, field1 = "y")
   })
@@ -236,10 +236,10 @@ test_that("get_project_values returns correct number of records (classic)", {
   stub(get_project_values, "REDCapR::redcap_metadata_read", api$redcap_metadata_read)
   stub(get_project_values, "REDCapR::redcap_read", api$redcap_read)
 
-  stub(get_project_values, "get_long_categorical_field_responses", function(...) data.frame())
-  stub(get_project_values, "get_long_text_fields", function(...) data.frame())
-  stub(get_project_values, "get_long_slider_fields", function(...) data.frame())
-  stub(get_project_values, "get_long_notes_fields", function(...) data.frame())
+  stub(get_project_values, "get_categorical_field_responses", function(...) data.frame())
+  stub(get_project_values, "get_text_fields", function(...) data.frame())
+  stub(get_project_values, "get_slider_fields", function(...) data.frame())
+  stub(get_project_values, "get_notes_fields", function(...) data.frame())
   stub(get_project_values, "get_one_rectangle_of_values", function(record_ids, ...) {
     data.frame(record_id = record_ids, field1 = "z")
   })
@@ -261,10 +261,10 @@ test_that("get_project_values returns empty df if forms_to_fill empty", {
     ))
   })
   stub(get_project_values, "REDCapR::redcap_read", api$redcap_read)
-  stub(get_project_values, "get_long_categorical_field_responses", function(...) data.frame())
-  stub(get_project_values, "get_long_text_fields", function(...) data.frame())
-  stub(get_project_values, "get_long_slider_fields", function(...) data.frame())
-  stub(get_project_values, "get_long_notes_fields", function(...) data.frame())
+  stub(get_project_values, "get_categorical_field_responses", function(...) data.frame())
+  stub(get_project_values, "get_text_fields", function(...) data.frame())
+  stub(get_project_values, "get_slider_fields", function(...) data.frame())
+  stub(get_project_values, "get_notes_fields", function(...) data.frame())
   stub(get_project_values, "get_one_rectangle_of_values", function(...) data.frame())
 
   res <- get_project_values("dummy_uri", "dummy_token", number_of_records_to_populate = 1)

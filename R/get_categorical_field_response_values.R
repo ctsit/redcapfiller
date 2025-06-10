@@ -1,9 +1,9 @@
 #' @title generate categorical field response values
 #' @description
 #' Provide a set of response values for each categorical field in
-#' `long_categorical_field_responses`
+#' `categorical_field_responses`
 #'
-#' @param long_categorical_field_responses a long data set of categorical
+#' @param categorical_field_responses a long data set of categorical
 #'   field response values and weights.
 #'
 #' @return a tall dataframe of categorical field response values with one
@@ -12,10 +12,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' get_long_categorical_field_response_values(long_categorical_field_responses)
+#' get_categorical_field_response_values(categorical_field_responses)
 #' }
-get_long_categorical_field_response_values <- function(long_categorical_field_responses) {
-  single_value_responses <- long_categorical_field_responses |>
+get_categorical_field_response_values <- function(categorical_field_responses) {
+  single_value_responses <- categorical_field_responses |>
     # Filter for any categorical field_type
     dplyr::filter(.data$field_type %in% c(
       "checkbox",
@@ -30,7 +30,7 @@ get_long_categorical_field_response_values <- function(long_categorical_field_re
     dplyr::ungroup()
 
   multi_value_responses <-
-    long_categorical_field_responses |>
+    categorical_field_responses |>
     # Filter for checkbox fields
     dplyr::filter(.data$field_type == "checkbox") |>
     dplyr::group_by(.data$field_group) |>

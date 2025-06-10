@@ -18,10 +18,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' long_categorical_field_responses <-
-#'   get_long_categorical_field_responses(metadata_to_populate)
+#' categorical_field_responses <-
+#'   get_categorical_field_responses(metadata_to_populate)
 #' }
-get_long_categorical_field_responses <- function(metadata) {
+get_categorical_field_responses <- function(metadata) {
   balanced_responses <-
     metadata |>
     # include only categorical field types

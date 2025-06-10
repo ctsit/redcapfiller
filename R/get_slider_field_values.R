@@ -1,20 +1,20 @@
 #' @title generate slider field values
 #' @description
 #' Provide a set of values for each slider field in
-#' `long_slider_values`
+#' `slider_values`
 #'
-#' @param long_slider_values a long data set of slider values and weights.
+#' @param slider_values a long data set of slider values and weights.
 #'
 #' @return a tall dataframe of slider values with one row for each field
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' get_long_slider_field_values(long_slider_values)
+#' get_slider_field_values(slider_values)
 #' }
-get_long_slider_field_values <- function(long_slider_values) {
+get_slider_field_values <- function(slider_values) {
 
-  result <- long_slider_values |>
+  result <- slider_values |>
     dplyr::filter(.data$field_type == "slider") |>
     dplyr::mutate(
       response_code = round(stats::rnorm(n = length(.data$mean), mean = .data$mean, sd = .data$sd)),

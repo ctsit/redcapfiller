@@ -4,9 +4,9 @@
 \name{redcapfiller-package}
 \alias{redcapfiller}
 \alias{redcapfiller-package}
-\title{redcapfiller: Fill a REDCap Project with Generated Data}
+\title{redcapfiller: Fill a REDCap Project with synthetic data}
 \description{
-Fill a REDCap project with generated data based on the project design and a minimal set of inputs.
+Fill a REDCap project with synthetic data based on the project design and a minimal set of inputs.
 }
 \author{
 \strong{Maintainer}: Philip Chase \email{pbc@ufl.edu} (\href{https://orcid.org/0000-0002-5318-9420}{ORCID})

@@ -1,9 +1,9 @@
 metadata_file <- testthat::test_path("shared_testdata", "metadata.csv")
 metadata <- readr::read_csv(metadata_file)
 
-output <- get_long_slider_fields(metadata)
+output <- get_slider_fields(metadata)
 
-testthat::test_that("get_long_slider_fields: processes sliders", {
+testthat::test_that("get_slider_fields: processes sliders", {
   testthat::expect_equal(
     output |>
       dplyr::distinct(field_type) |>
@@ -13,7 +13,7 @@ testthat::test_that("get_long_slider_fields: processes sliders", {
   )
 })
 
-testthat::test_that("get_long_slider_fields values are distinct within each field", {
+testthat::test_that("get_slider_fields values are distinct within each field", {
   duplicate_values <- output %>%
     dplyr::group_by(field_name) %>%
     dplyr::summarise(duplicates = sum(duplicated(select_choices_or_calculations))) %>%
@@ -22,7 +22,7 @@ testthat::test_that("get_long_slider_fields values are distinct within each fiel
   testthat::expect_true(all(duplicate_values == 0), "There are duplicate values within groups")
 })
 
-testthat::test_that("get_long_slider_fields weights are balanced", {
+testthat::test_that("get_slider_fields weights are balanced", {
   testthat::expect_true(output |>
                           dplyr::group_by(field_name) |>
                           dplyr::summarise(balanced = (min(weight) == max(weight))) |>

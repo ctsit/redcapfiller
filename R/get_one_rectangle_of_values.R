@@ -3,8 +3,8 @@
 #' @param one_record_id a single record_id
 #' @param record_id_name the column name the record_id should be returned in
 #' @param forms_to_fill the forms to fill for this rectangle
-#' @param long_fields_and_responses the output of `get_long_*_fields` and
-#'   `get_long_categorical_field_responses_responses` functions
+#' @param fields_and_responses the output of `get_*_fields` and
+#'   `get_categorical_field_responses_responses` functions
 #' @param event_name event name to include as a column after record_id; default NA_character_. If NA, omit column for compatibility.
 #'
 #' @returns a rectangle of data with appropriate REDCap identifiers ready to write to REDCap
@@ -19,7 +19,7 @@ get_one_rectangle_of_values <- function(
     one_record_id = 1,
     record_id_name,
     forms_to_fill,
-    long_fields_and_responses,
+    fields_and_responses,
     event_name = NA_character_) {
   redcap_identifiers <- dplyr::tibble(
     record_id = one_record_id
@@ -43,10 +43,10 @@ get_one_rectangle_of_values <- function(
   }
 
   value_getter_functions <- c(
-    "get_long_categorical_field_response_values",
-    "get_long_text_field_values",
-    "get_long_slider_field_values",
-    "get_long_notes_field_values"
+    "get_categorical_field_response_values",
+    "get_text_field_values",
+    "get_slider_field_values",
+    "get_notes_field_values"
   )
 
   process_one_value_getter <- function(value_getter, df) {
@@ -58,20 +58,20 @@ get_one_rectangle_of_values <- function(
     purrr::map(
       value_getter_functions,
       process_one_value_getter,
-      long_fields_and_responses |>
+      fields_and_responses |>
         dplyr::filter(.data$form_name %in% forms_to_fill)
     ) |>
     dplyr::bind_rows()
 
   # prefix responses with redcap fields
-  long_result <- dplyr::bind_cols(
+  result <- dplyr::bind_cols(
     redcap_identifiers,
     all_responses
   )
 
   id_cols <- names(redcap_identifiers)
 
-  wide_result <- long_result |>
+  wide_result <- result |>
     tidyr::pivot_wider(
       id_cols = dplyr::any_of(id_cols),
       names_from = "field_name",

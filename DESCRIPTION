@@ -1,6 +1,6 @@
 Package: redcapfiller
 Type: Package
-Title: Fill a REDCap Project with Generated Data
+Title: Fill a REDCap Project with synthetic data
 Version: 0.1.0.9002
 Authors@R: c(
   person("Philip", "Chase",
@@ -24,7 +24,7 @@ Authors@R: c(
         role = "ctb",
         comment=c(ORCID = "0000-0001-7114-1992"))
         )
-Description: Fill a REDCap project with generated data based on the project design and a minimal set of inputs.
+Description: Fill a REDCap project with synthetic data based on the project design and a minimal set of inputs.
 License: Apache License (>= 2)
 Encoding: UTF-8
 Depends:
@@ -48,4 +48,3 @@ Imports:
     checkmate,
     REDCapR
 RoxygenNote: 7.3.2
-VignetteBuilder: knitr

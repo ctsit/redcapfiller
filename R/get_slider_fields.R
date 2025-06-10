@@ -21,11 +21,11 @@
 #'
 #' @examples
 #' \dontrun{
-#' long_slider_fields <-
-#'   get_long_slider_fields(metadata_to_populate)
+#' slider_fields <-
+#'   get_slider_fields(metadata_to_populate)
 #' }
-get_long_slider_fields <- function(metadata) {
-  long_slider_values <- metadata |>
+get_slider_fields <- function(metadata) {
+  slider_values <- metadata |>
     # include only slider field types
     dplyr::filter(.data$field_type == "slider") |>
     dplyr::group_by(.data$field_name) |>
@@ -60,5 +60,5 @@ get_long_slider_fields <- function(metadata) {
     ) |>
     dplyr::ungroup()
 
-  return(long_slider_values)
+  return(slider_values)
 }

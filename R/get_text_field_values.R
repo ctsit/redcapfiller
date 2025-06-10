@@ -1,9 +1,9 @@
 #' @title generate text field values
 #' @description
 #' Provide a set of values for each field in the output of
-#' `get_long_text_fields`
+#' `get_text_fields`
 #'
-#' @param long_text_fields a long data set of text
+#' @param text_fields a long data set of text
 #'   fields, their parameters, and weights.
 #'
 #' @return a long dataframe of text field values with one row for each value set.
@@ -13,9 +13,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' get_long_text_field_values(long_text_fields)
+#' get_text_field_values(text_fields)
 #' }
-get_long_text_field_values <- function(long_text_fields) {
+get_text_field_values <- function(text_fields) {
   tvt_na <- function(df) {
     df |>
       dplyr::filter(.data$tvt == "tvt_na") |>
@@ -144,7 +144,7 @@ get_long_text_field_values <- function(long_text_fields) {
     purrr::map(
       tvt_types,
       process_one_text_validation_type,
-      long_text_fields |> dplyr::filter(.data$field_type == "text")
+      text_fields |> dplyr::filter(.data$field_type == "text")
     ) |>
     # get rid of empty data frames in the list output
     purrr::keep(~ nrow(.x) > 0)

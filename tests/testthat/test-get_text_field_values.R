@@ -1,19 +1,19 @@
-long_text_field_values <- readRDS(
-  testthat::test_path("get_long_text_field_values", "input.rds")
+text_field_values <- readRDS(
+  testthat::test_path("get_text_field_values", "input.rds")
 )
 
-output <- get_long_text_field_values(long_text_field_values)
-output_b <- get_long_text_field_values(long_text_field_values)
-output_c <- get_long_text_field_values(long_text_field_values)
+output <- get_text_field_values(text_field_values)
+output_b <- get_text_field_values(text_field_values)
+output_c <- get_text_field_values(text_field_values)
 
-testthat::test_that("get_long_text_field_values returns field_name and value columns", {
+testthat::test_that("get_text_field_values returns field_name and value columns", {
   testthat::expect_true(all.equal(
     names(output),
     c("field_name", "value")
   ))
 })
 
-testthat::test_that("get_long_text_field_values returns a constant vector of field_names when called repeatedly", {
+testthat::test_that("get_text_field_values returns a constant vector of field_names when called repeatedly", {
   testthat::expect_true(identical(
     output$field_name, output_b$field_name
   ))
@@ -22,7 +22,7 @@ testthat::test_that("get_long_text_field_values returns a constant vector of fie
   ))
 })
 
-testthat::test_that("get_long_text_field_values returns a varying vector of values when called repeatedly", {
+testthat::test_that("get_text_field_values returns a varying vector of values when called repeatedly", {
   testthat::expect_false(identical(
     output$value, output_b$value
   ))
@@ -31,7 +31,7 @@ testthat::test_that("get_long_text_field_values returns a varying vector of valu
   ))
 })
 
-testthat::test_that("get_long_text_field_values returns a value field for date and datetime fields", {
+testthat::test_that("get_text_field_values returns a value field for date and datetime fields", {
   date_fields <- output$field_name[grepl("^date.", output$field_name)]
   datetime_fields <- output$field_name[grepl("^datetime.", output$field_name)]
 
@@ -43,7 +43,7 @@ testthat::test_that("get_long_text_field_values returns a value field for date a
 })
 
 # test that every value is a character
-testthat::test_that("get_long_text_field_values returns a character vector", {
+testthat::test_that("get_text_field_values returns a character vector", {
   testthat::expect_true(all(sapply(output$value, is.character)))
 })
 

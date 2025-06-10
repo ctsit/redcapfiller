@@ -1,0 +1,53 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Fill a REDCap Project with synthetic data
+message:
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - family-names: Chase
+    given-names: Philip B
+    email: pbc@ufl.edu
+    affiliation: University of Florida
+    orcid: https://orcid.org/0000-0002-5318-9420
+  - family-names: Kamma
+    given-names: Sai Pavan
+    email: saipavankamma@ufl.edu
+    affiliation: University of Florida
+    orcid: https://orcid.org/0009-0004-4619-0409
+  - family-names: James-Woodley
+    given-names: Laurence
+    email: lawjames1@ufl.edu
+    affiliation: University of Florida
+    orcid: https://orcid.org/0000-0002-6418-2742
+  - family-names: Stoffs
+    given-names: Taryn L
+    email: tls@ufl.edu
+    affiliation: University of Florida
+    orcid: https://orcid.org/0000-0002-0830-8179
+  - family-names: Barnes
+    given-names: Christopher P
+    email: cpb@ufl.edu
+    affiliation: University of Florida
+    orcid: https://orcid.org/0000-0001-7114-1992
+repository-code:
+  https://github.com/ctsit/redcapfiller
+url:
+  https://ctsit.github.io/redcapfiller/
+abstract:
+  Fill a REDCap Project with synthetic data based on the project 
+  design and a minimal set of inputs.
+keywords:
+  - redcap
+  - clinical science
+  - data management
+  - synthetic data
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.15634676
+license: Apache-2.0
+version: 0.1.0
+date-released: '2025-06-10'

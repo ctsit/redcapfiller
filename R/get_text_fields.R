@@ -23,10 +23,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' long_text_fields <-
-#'   get_long_text_fields(metadata_to_populate)
+#' text_fields <-
+#'   get_text_fields(metadata_to_populate)
 #' }
-get_long_text_fields <- function(metadata) {
+get_text_fields <- function(metadata) {
   text_fields <-
     metadata |>
     # include only categorical field types
