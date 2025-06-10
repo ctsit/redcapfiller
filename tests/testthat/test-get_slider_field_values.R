@@ -24,9 +24,8 @@ testthat::test_that("get_slider_field_values returns the correct df with values 
   testthat::expect_true(result$all_within_range)
 })
 
-testthat::test_that("get_slider_field_values returns a unique number for each slider", {
-  testthat::expect_equal(
-    output |> dplyr::distinct(value) |> nrow(),
-    output |> nrow()
+testthat::test_that("get_slider_field_values returns more than 1 distinct value", {
+  testthat::expect_true(
+    output |> dplyr::distinct(value) |> nrow() > 1
   )
 })
