@@ -21,7 +21,7 @@ redcap_uri <- Sys.getenv("REDCAP_URI")
 token <- Sys.getenv("DEMOGRAPHICS_TOKEN")
 ```
 
-[REDCap](https://projectredcap.org/) is an electronic data capture software that is widely used in the academic research community. It provides tools building and managing online surveys and databases. These tools allow a designer to create complex data collection instruments with rich data typing, validation rules, repeating data structures, and time-series data collection and present these in a data-collection *project*. Data collected using this REDCap Project must conform the rules in the project definition. REDCap Filler provides a testing and development service for REDCap users. It generates and loads test data into a REDCap project, using the project's design to guide test data generation. This article provides a basic example using redcapfiller to populate a REDCap project.
+[REDCap](https://projectredcap.org/) is an electronic data capture software that is widely used in the academic research community. It provides tools building and managing online surveys and databases. These tools allow a designer to create complex data collection instruments with rich data typing, validation rules, repeating data structures, and time-series data collection and present these in a data-collection *project*. Data collected using this REDCap Project must conform the rules in the project definition. REDCap Filler provides a testing and development service for REDCap users. It generates and loads synthetic test data into a REDCap project, using the project's design to guide test data generation. This article provides a basic example using redcapfiller to populate a REDCap project.
 
 ## TL;DR
 
@@ -73,7 +73,7 @@ Don't be distracted by the character data types on the numeric columns. They sti
 
 ## Writing the data
 
-Writing the generated data to REDCap requires you walk the list to write each list element. This is easy with `purrr::walk()`
+Writing the synthetic data to REDCap requires you walk the list to write each list element. This is easy with `purrr::walk()`
 
 ```{r write-generated-values-example-1}
 purrr::walk(

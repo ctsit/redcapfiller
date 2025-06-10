@@ -1,7 +1,7 @@
 [REDCap Filler](https://github.com/ctsit/redcapfiller)
 =======
 
-REDCap Filler provides a testing and development service to users of Vanderbilt University's [REDCap](https://projectredcap.org/). It generates and loads test data into a REDCap project, using the project's design to guide test data generation. This data-driven process allows rapid data creation with minimal effort. This provides a low-cost way to test many of the project features. It provides test data as input for reporting and other downstream processes.
+REDCap Filler provides a testing and development service to users of Vanderbilt University's [REDCap](https://projectredcap.org/). It generates and loads synthetic test data into a REDCap project, using the project's design to guide test data generation. This data-driven process allows rapid data creation with minimal effort. This provides a low-cost way to test many of the project features. It provides test data as input for reporting and other downstream processes.
 
 ### Installation
 
@@ -21,7 +21,7 @@ See https://ctsit.github.io/redcapfiller/articles/getting_started.html to learn 
 REDCap Filler does not yet understand all the dimensions of a modern REDCap project. It can fill the categorical fields. It can fill unvalidated text field and the text validation types date, datetime, email, integer, number, phone, and zipcode. It ignores all other field types and validation types and will not attempt to fill them. Filler can fill classic and longitudinal projects, but not if they have repeating forms, repeating events, or randomization enabled. It does not honor form display logic and ignores all fields governed by branching logic.
 
 *   Works on **classic projects** and **longitudinal projects**.
-*   Uses the REDCap API to read the project design and write the generated data.
+*   Uses the REDCap API to read the project design and write the synthetic data.
 *   Fills categorical fields (providing a uniform random distribution).
 *   Fills unvalidated text fields and fields with common text validation types: date, datetime, email, integer, number, phone, and zipcode.
     *   Provides random-normal distributions for numeric and date fields.
