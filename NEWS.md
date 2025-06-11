@@ -1,4 +1,5 @@
 # redcapfiller 0.1.0 (released 2025-06-10)
+* Initial release (@pbchase, @saipavan10-git, @ljwoodley)
 * Works on **classic projects** and **longitudinal projects**.
 * Uses the REDCap API to read the project design and write the generated data.
 * Fills categorical fields (providing a uniform random distribution).
@@ -10,4 +11,3 @@
 * Does not violate basic data constraints defined in the data dictionary (e.g., validation types, ranges where applicable).
 * Populates specified events in longitudinal projects.
 * Fills a specified number of records.
-* Authors: @pbchase, @saipavan10-git, @ljwoodley
