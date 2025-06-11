@@ -1,3 +1,6 @@
+# redcapfiller 0.1.1 (released 2025-06-11)
+- Fix initial release errors (@pbchase, #36)
+
 # redcapfiller 0.1.0 (released 2025-06-10)
 * Initial release (@pbchase, @saipavan10-git, @ljwoodley)
 * Works on **classic projects** and **longitudinal projects**.
