@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">redcapfiller</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.1</span>
       </span>
     </div>
 
@@ -74,11 +74,12 @@
 <div class="page-header"><h1 id="redcap-filler">
 <a href="https://github.com/ctsit/redcapfiller" class="external-link">REDCap Filler</a><a class="anchor" aria-label="anchor" href="#redcap-filler"></a>
 </h1></div>
-<p>REDCap Filler provides a testing and development service to users of Vanderbilt University’s <a href="https://projectredcap.org/" class="external-link">REDCap</a>. It generates and loads synthetic test data into a REDCap project, using the project’s design to guide test data generation. This data-driven process allows rapid data creation with minimal effort. This provides a low-cost way to test many of the project features. It provides test data as input for reporting and other downstream processes.</p>
+<p><a href="https://doi.org/10.5281/zenodo.15635725" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.15635725.svg" alt="DOI"></a> <a href="https://github.com/ctsit/redcapfiller/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/ctsit/redcapfiller/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></p>
+<p>REDCap Filler provides a testing and development service to users of Vanderbilt University’s <a href="https://projectredcap.org/" class="external-link">REDCap</a>. It generates and loads synthetic test data into a REDCap project, using the project’s design to guide test data generation. This data-driven process allows rapid data creation with minimal effort. This provides a low-cost way to test many of the project features. It creates test data as input for reporting and other downstream processes.</p>
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
-<p>The redcapfiller package is only available as source code on GitHub. Install it from github inside R or RStudio using the <code>remotes</code> package:</p>
+<p>The redcapfiller package is only available as source code on GitHub. Install it from GitHub inside R or RStudio using the <code>remotes</code> package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span> <span class="co"># Run this line if the 'remotes' package hasn't been installed already.</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ctsit/redcapfiller"</span><span class="op">)</span></span></code></pre></div>
@@ -86,17 +87,17 @@
 <div class="section level3">
 <h3 id="using-redcap-filler">Using REDCap Filler<a class="anchor" aria-label="anchor" href="#using-redcap-filler"></a>
 </h3>
-<p>See <a href="https://ctsit.github.io/redcapfiller/articles/getting_started.html" class="external-link uri">https://ctsit.github.io/redcapfiller/articles/getting_started.html</a> to learn how to use redcapfiller.</p>
+<p>See <a href="https://ctsit.github.io/redcapfiller/articles/getting_started.html" class="external-link">Getting started with redcapfiller</a> to learn how to use redcapfiller.</p>
 </div>
 <div class="section level3">
 <h3 id="limitations">Limitations<a class="anchor" aria-label="anchor" href="#limitations"></a>
 </h3>
-<p>REDCap Filler does not yet understand all the dimensions of a modern REDCap project. It can fill the categorical fields. It can fill unvalidated text field and the text validation types date, datetime, email, integer, number, phone, and zipcode. It ignores all other field types and validation types and will not attempt to fill them. Filler can fill classic and longitudinal projects, but not if they have repeating forms, repeating events, or randomization enabled. It does not honor form display logic and ignores all fields governed by branching logic.</p>
+<p>REDCap Filler does not yet understand all the dimensions of a modern REDCap project. It can fill the categorical fields. It can fill unvalidated text fields and the text validation types date, datetime, email, integer, number, phone, and zip code. It ignores all other field types and validation types and will not attempt to fill them. Filler can fill classic and longitudinal projects, but not if they have repeating forms, repeating events, or randomization enabled. It does not honor form display logic and ignores all fields governed by branching logic.</p>
 <ul>
 <li>Works on <strong>classic projects</strong> and <strong>longitudinal projects</strong>.</li>
 <li>Uses the REDCap API to read the project design and write the synthetic data.</li>
 <li>Fills categorical fields (providing a uniform random distribution).</li>
-<li>Fills unvalidated text fields and fields with common text validation types: date, datetime, email, integer, number, phone, and zipcode.
+<li>Fills unvalidated text fields and fields with common text validation types: date, datetime, email, integer, number, phone, and zip code.
 <ul>
 <li>Provides random-normal distributions for numeric and date fields.</li>
 <li>Uses “Lorem ipsum” text for non-validated text fields.</li>
@@ -122,10 +123,10 @@
 </h3>
 <p>This project aims to populate complex REDCap projects using the project design. If the REDCap API exposes a design dimension, we plan to use that to guide how the Filler populates projects. Yet, that will take some time to develop fully. This is the proposed timeline of features:</p>
 <ol style="list-style-type: decimal">
-<li>Complete support for any text validation types missing currently.</li>
+<li>Complete support for any text validation types currently missing.</li>
 <li>Add support for <strong>repeating events</strong> and <strong>repeating forms</strong>.</li>
 <li>Skip randomization fields to allow support for projects with <strong>randomization</strong>.</li>
-<li>Allow user specification of non-uniform distributions for categorical fields and non-default distributions for ranged fields.</li>
+<li>Allow users to specify non-uniform distributions for categorical fields and non-default distributions for range fields.</li>
 <li>Allow configuration of inter-record and intra-record date offsets.</li>
 <li>Add support for evaluating <strong>Branching Logic</strong>.</li>
 <li>Add support for evaluating <strong>Form Display Logic</strong>.</li>
@@ -136,12 +137,6 @@
 </h3>
 <p>We encourage input and collaboration. If you’re familiar with GitHub and R packages, submit a <a href="https://github.com/ctsit/redcapfiller/pulls" class="external-link">pull request</a>. If you’d like to report a bug or suggest, please create a GitHub <a href="https://github.com/ctsit/redcapfiller/issues" class="external-link">issue</a>; issues are usually a good place to ask public questions, too. However, email Philip if you prefer an offline dialog (<a href="mailto:pbc@ufl.edu" class="email">pbc@ufl.edu</a>).</p>
 <p>We’d like to thank the REDCap Community for their advice and contributions to the design of REDCap Filler.</p>
-</div>
-<div class="section level3">
-<h3 id="build-status">Build status<a class="anchor" aria-label="anchor" href="#build-status"></a>
-</h3>
-<!-- badges: start -->
-
 </div>
 </div>
   </div>
@@ -173,12 +168,7 @@
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://github.com/ctsit/redcapfiller/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/ctsit/redcapfiller/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
-</ul>
-</div>
+
 
   </div>
 </div>
