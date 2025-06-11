@@ -1,3 +1,5 @@
+# Apache 2.0 License
+
 Copyright 2025 University of Florida
 
 Licensed under the Apache License, Version 2.0 (the "License");
