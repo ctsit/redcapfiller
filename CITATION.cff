@@ -2,10 +2,10 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: Fill a REDCap Project with synthetic data
+title: REDCap Filler - an R package that fills a REDCap Project with synthetic data
 message:
-  If you use this software, please cite it using the
-  metadata from this file.
+  If you use this software, please cite it with the metadata
+  in CITATION.cff or https://doi.org/10.5281/zenodo.15635725
 type: software
 authors:
   - family-names: Chase
@@ -38,16 +38,20 @@ repository-code:
 url:
   https://ctsit.github.io/redcapfiller/
 abstract:
-  Fill a REDCap Project with synthetic data based on the project 
-  design and a minimal set of inputs.
+  REDCap Filler is an R package that can fill a REDCap project
+  with synthetic data using the project design and a minimal
+  set of paramaters as input. It uses the REDCap API to read
+  a project's design and write the synthetic data back to the
+  project.
 keywords:
   - redcap
+  - redcap api
   - clinical science
   - data management
   - synthetic data
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.15634676
+    value: 10.5281/zenodo.15635725
 license: Apache-2.0
-version: 0.1.0
-date-released: '2025-06-10'
+version: 0.1.1
+date-released: '2025-06-11'
