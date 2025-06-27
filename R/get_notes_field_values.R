@@ -1,12 +1,12 @@
 #' @title Generate notes field content
 #' @description
-#' Generate lorem ipsum text content for each notes field in the provided metadata
+#' Generate lorem ipsum text content for each notes field in `notes_fields`
 #'
-#' @param notes_fields A dataframe of notes fields from a REDCap data dictionary
-#'   (typically output from `get_notes_fields()`)
+#' @param notes_fields A long dataframe of notes fields from a REDCap data dictionary
+#'   (typically output from [get_notes_fields()])
 #'
 #' @return A tall dataframe of notes field content with one row per field
-#' @export
+#' @keywords Internal
 #'
 #' @examples
 #' \dontrun{

@@ -37,7 +37,7 @@ Suggests:
     stringr,
     mockery,
     testthat (>= 3.0.0)
-Remotes: 
+Remotes:
     github::ctsit/redcapfiller
 Config/testthat/edition: 3
 Imports: 

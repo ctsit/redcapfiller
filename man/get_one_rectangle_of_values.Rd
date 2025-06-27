@@ -19,13 +19,16 @@ get_one_rectangle_of_values(
 
 \item{forms_to_fill}{the forms to fill for this rectangle}
 
-\item{fields_and_responses}{the output of `get_*_fields` and
-`get_categorical_field_responses_responses` functions}
+\item{fields_and_responses}{the output of [get_text_fields()],
+[get_slider_fields()], [get_notes_fields()],  and
+[get_categorical_field_responses()] functions}
 
-\item{event_name}{event name to include as a column after record_id; default NA_character_. If NA, omit column for compatibility.}
+\item{event_name}{event name to include as a column after record_id;
+default NA_character_. If NA, omit column for compatibility.}
 }
 \value{
-a rectangle of data with appropriate REDCap identifiers ready to write to REDCap
+A rectangle of data with appropriate REDCap identifiers ready
+  to write to REDCap
 }
 \description{
 Generate a rectangle of data for one record
@@ -35,3 +38,4 @@ Generate a rectangle of data for one record
 get_one_rectangle_of_values(1, record_id_name, forms_to_fill)
 }
 }
+\keyword{Internal}

@@ -7,17 +7,18 @@
 get_notes_field_values(notes_fields)
 }
 \arguments{
-\item{notes_fields}{A dataframe of notes fields from a REDCap data dictionary
-(typically output from `get_notes_fields()`)}
+\item{notes_fields}{A long dataframe of notes fields from a REDCap data dictionary
+(typically output from [get_notes_fields()])}
 }
 \value{
 A tall dataframe of notes field content with one row per field
 }
 \description{
-Generate lorem ipsum text content for each notes field in the provided metadata
+Generate lorem ipsum text content for each notes field in `notes_fields`
 }
 \examples{
 \dontrun{
 notes_responses <- get_notes_field_values(notes_fields)
 }
 }
+\keyword{Internal}

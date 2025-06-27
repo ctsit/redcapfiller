@@ -3,12 +3,15 @@
 #' @param one_record_id a single record_id
 #' @param record_id_name the column name the record_id should be returned in
 #' @param forms_to_fill the forms to fill for this rectangle
-#' @param fields_and_responses the output of `get_*_fields` and
-#'   `get_categorical_field_responses_responses` functions
-#' @param event_name event name to include as a column after record_id; default NA_character_. If NA, omit column for compatibility.
+#' @param fields_and_responses the output of [get_text_fields()],
+#'   [get_slider_fields()], [get_notes_fields()],  and
+#'   [get_categorical_field_responses()] functions
+#' @param event_name event name to include as a column after record_id;
+#' default NA_character_. If NA, omit column for compatibility.
 #'
-#' @returns a rectangle of data with appropriate REDCap identifiers ready to write to REDCap
-#' @export
+#' @returns A rectangle of data with appropriate REDCap identifiers ready
+#'   to write to REDCap
+#' @keywords Internal
 #' @importFrom rlang .data
 #'
 #' @examples

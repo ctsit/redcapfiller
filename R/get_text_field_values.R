@@ -1,13 +1,13 @@
-#' @title generate text field values
+#' @title Generate text field values
 #' @description
-#' Provide a set of values for each field in the output of
-#' `get_text_fields`
+#' Generate values for each field in `text_fields`. This function addresses
+#' all the text validation types
 #'
-#' @param text_fields a long data set of text
+#' @param text_fields A long dataframe of text
 #'   fields, their parameters, and weights.
 #'
-#' @return a long dataframe of text field values with one row for each value set.
-#' @export
+#' @return A long dataframe of text field values with one row for each value set.
+#' @keywords Internal
 #'
 #' @importFrom lubridate today now
 #'

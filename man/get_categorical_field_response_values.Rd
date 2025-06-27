@@ -2,16 +2,16 @@
 % Please edit documentation in R/get_categorical_field_response_values.R
 \name{get_categorical_field_response_values}
 \alias{get_categorical_field_response_values}
-\title{generate categorical field response values}
+\title{Generate categorical field response values}
 \usage{
 get_categorical_field_response_values(categorical_field_responses)
 }
 \arguments{
-\item{categorical_field_responses}{a long data set of categorical
+\item{categorical_field_responses}{A long dataframe of categorical
 field response values and weights.}
 }
 \value{
-a tall dataframe of categorical field response values with one
+A long dataframe of categorical field response values with one
 row for each value set.
 }
 \description{
@@ -23,3 +23,4 @@ Provide a set of response values for each categorical field in
 get_categorical_field_response_values(categorical_field_responses)
 }
 }
+\keyword{Internal}

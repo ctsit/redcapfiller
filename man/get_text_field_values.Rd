@@ -2,23 +2,24 @@
 % Please edit documentation in R/get_text_field_values.R
 \name{get_text_field_values}
 \alias{get_text_field_values}
-\title{generate text field values}
+\title{Generate text field values}
 \usage{
 get_text_field_values(text_fields)
 }
 \arguments{
-\item{text_fields}{a long data set of text
+\item{text_fields}{A long dataframe of text
 fields, their parameters, and weights.}
 }
 \value{
-a long dataframe of text field values with one row for each value set.
+A long dataframe of text field values with one row for each value set.
 }
 \description{
-Provide a set of values for each field in the output of
-`get_text_fields`
+Generate values for each field in `text_fields`. This function addresses
+all the text validation types
 }
 \examples{
 \dontrun{
 get_text_field_values(text_fields)
 }
 }
+\keyword{Internal}
