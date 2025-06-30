@@ -20,6 +20,10 @@ Authors:
 Other contributors:
 \itemize{
   \item Taryn Stoffs \email{tls@ufl.edu} (\href{https://orcid.org/0000-0002-0830-8179}{ORCID}) [contributor]
+  \item Natalie Williams (\href{https://orcid.org/0009-0004-2983-1542}{ORCID}) [contributor]
+  \item William Beasley \email{whb4@ou.edu} (\href{https://orcid.org/0000-0002-5613-5006}{ORCID}) [contributor]
+  \item Aidan Wilson \email{aidan.wilson@intersect.org.au} (\href{https://orcid.org/0000-0001-9858-5470}{ORCID}) [contributor]
+  \item Christopher Battiston \email{chris.battiston@wchospital.ca} (\href{https://orcid.org/0000-0003-2179-3735}{ORCID}) [contributor]
   \item Christopher Barnes \email{cpb@ufl.edu} (\href{https://orcid.org/0000-0001-7114-1992}{ORCID}) [contributor]
 }
 
