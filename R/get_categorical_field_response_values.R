@@ -1,14 +1,14 @@
-#' @title generate categorical field response values
+#' @title Generate categorical field response values
 #' @description
 #' Provide a set of response values for each categorical field in
 #' `categorical_field_responses`
 #'
-#' @param categorical_field_responses a long data set of categorical
+#' @param categorical_field_responses A long dataframe of categorical
 #'   field response values and weights.
 #'
-#' @return a tall dataframe of categorical field response values with one
+#' @return A long dataframe of categorical field response values with one
 #' row for each value set.
-#' @export
+#' @keywords Internal
 #'
 #' @examples
 #' \dontrun{

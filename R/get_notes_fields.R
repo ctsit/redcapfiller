@@ -1,19 +1,19 @@
-#' @title Get long notes fields from a REDCap data dictionary
+#' @title Get notes fields from a REDCap data dictionary and annotate them with weights
 #'
 #' @description
-#' Given a REDCap data dictionary, this function returns the fields (rows) that have a field type of notes.
+#' Given a REDCap data dictionary, this function returns the rows that have a field type of _notes_.
 #'
 #' @param metadata A REDCap data dictionary
 #'
-#' @returns A dataframe with the following columns:
+#' @returns A long dataframe with the following columns:
 #' \describe{
 #'   \item{field_name}{The name of the field.}
 #'   \item{form_name}{The form name in which the field is located.}
-#'   \item{field_type}{The type of the field (will always be "notes").}
+#'   \item{field_type}{The type of the field (this will always be _notes_).}
 #'   \item{weight}{A uniform weight, set to 100.}
 #' }
 #'
-#' @export
+#' @keywords Internal
 #'
 #' @examples
 #' \dontrun{

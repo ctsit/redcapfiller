@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_slider_fields.R
 \name{get_slider_fields}
 \alias{get_slider_fields}
-\title{Get slider field ranges from a REDCap data dictionary}
+\title{Get slider field from a REDCap data dictionary}
 \usage{
 get_slider_fields(metadata)
 }
@@ -10,7 +10,7 @@ get_slider_fields(metadata)
 \item{metadata}{A REDCap data dictionary}
 }
 \value{
-a dataframe with these columns
+A long dataframe with these columns
 \describe{
   \item{field_name}{REDCap field name}
   \item{form_name}{REDCap form name}
@@ -18,13 +18,15 @@ a dataframe with these columns
   \item{select_choices_or_calculations}{RedCap select_choices_or_calculations field}
   \item{text_validation_min}{REDCap text validation min}
   \item{text_validation_max}{REDCap text validation max}
-  \item{mean}{mean of data to be generated}
-  \item{sd}{standard deviation of data to be generated}
+  \item{mean}{mean of data to be generated. This is derived from the allowed range of values}
+  \item{sd}{standard deviation of data to be generated. This is derived from the allowed range of values}
 
 }
 }
 \description{
-Given a REDCap data dictionary, enumerate range of values for every slider field in that data dictionary
+Given a REDCap data dictionary, enumerate every slider field in that data
+dictionary including select choices, min and max values, and add a mean and
+standard deviation derived from the min and max values.
 }
 \examples{
 \dontrun{
@@ -32,3 +34,4 @@ slider_fields <-
   get_slider_fields(metadata_to_populate)
 }
 }
+\keyword{Internal}

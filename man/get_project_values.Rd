@@ -16,13 +16,17 @@ get_project_values(
 
 \item{token}{REDCap project API token}
 
-\item{events}{(Optional) Vector of event names to fill}
+\item{events}{An optional vector of event names to fill (defaults to all events)}
 
-\item{number_of_records_to_populate}{Number of records to generate (default 5)}
+\item{number_of_records_to_populate}{An optional number of records to generate (default 5)}
 }
 \value{
-List of data frames (one per event, or just one for classic projects)
+A list of data frames (one per event, or just one for classic
+projects). Each list element contains a dataframe of synthetic data
+for each of the forms on that event. Each dataframe is ready to load
+into REDCap.
 }
 \description{
-Get Project Values
+Generate a dataset of synthetic data for a REDCap project using the project
+design retrieved via the REDCap API.
 }

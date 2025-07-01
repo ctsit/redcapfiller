@@ -1,11 +1,13 @@
-#' @title Get slider field ranges from a REDCap data dictionary
+#' @title Get slider field from a REDCap data dictionary
 #'
 #' @description
-#' Given a REDCap data dictionary, enumerate range of values for every slider field in that data dictionary
+#' Given a REDCap data dictionary, enumerate every slider field in that data
+#' dictionary including select choices, min and max values, and add a mean and
+#' standard deviation derived from the min and max values.
 #'
 #' @param metadata A REDCap data dictionary
 #'
-#' @returns a dataframe with these columns
+#' @returns A long dataframe with these columns
 #' \describe{
 #'   \item{field_name}{REDCap field name}
 #'   \item{form_name}{REDCap form name}
@@ -13,11 +15,11 @@
 #'   \item{select_choices_or_calculations}{RedCap select_choices_or_calculations field}
 #'   \item{text_validation_min}{REDCap text validation min}
 #'   \item{text_validation_max}{REDCap text validation max}
-#'   \item{mean}{mean of data to be generated}
-#'   \item{sd}{standard deviation of data to be generated}
+#'   \item{mean}{mean of data to be generated. This is derived from the allowed range of values}
+#'   \item{sd}{standard deviation of data to be generated. This is derived from the allowed range of values}
 #'
 #' }
-#' @export
+#' @keywords Internal
 #'
 #' @examples
 #' \dontrun{

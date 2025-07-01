@@ -5,7 +5,7 @@
 #'
 #' @param metadata A REDCap data dictionary
 #'
-#' @returns a dataframe with these columns
+#' @returns A long dataframe with these columns
 #' \describe{
 #'   \item{field_name}{First item}
 #'   \item{field_type}{Second item}
@@ -14,7 +14,7 @@
 #'   \item{field_group}{Second item}
 #'   \item{weight}{a set of uniform weights across the responses of each field}
 #' }
-#' @export
+#' @keywords Internal
 #'
 #' @examples
 #' \dontrun{
