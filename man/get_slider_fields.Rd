@@ -12,14 +12,14 @@ get_slider_fields(metadata)
 \value{
 A long dataframe with these columns
 \describe{
-  \item{field_name}{REDCap field name}
-  \item{form_name}{REDCap form name}
-  \item{field_type}{REDCap field type}
-  \item{select_choices_or_calculations}{RedCap select_choices_or_calculations field}
-  \item{text_validation_min}{REDCap text validation min}
-  \item{text_validation_max}{REDCap text validation max}
-  \item{mean}{mean of data to be generated. This is derived from the allowed range of values}
-  \item{sd}{standard deviation of data to be generated. This is derived from the allowed range of values}
+\item{field_name}{REDCap field name}
+\item{form_name}{REDCap form name}
+\item{field_type}{REDCap field type}
+\item{select_choices_or_calculations}{RedCap select_choices_or_calculations field}
+\item{text_validation_min}{REDCap text validation min}
+\item{text_validation_max}{REDCap text validation max}
+\item{mean}{mean of data to be generated. This is derived from the allowed range of values}
+\item{sd}{standard deviation of data to be generated. This is derived from the allowed range of values}
 
 }
 }

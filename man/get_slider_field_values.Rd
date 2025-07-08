@@ -13,7 +13,7 @@ get_slider_field_values(slider_values)
 A long dataframe of slider values with one row for each field
 }
 \description{
-Generate values for each slider field in `slider_values`
+Generate values for each slider field in \code{slider_values}
 }
 \examples{
 \dontrun{

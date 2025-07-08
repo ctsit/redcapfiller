@@ -16,7 +16,7 @@ row for each value set.
 }
 \description{
 Provide a set of response values for each categorical field in
-`categorical_field_responses`
+\code{categorical_field_responses}
 }
 \examples{
 \dontrun{

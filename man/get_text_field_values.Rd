@@ -14,7 +14,7 @@ fields, their parameters, and weights.}
 A long dataframe of text field values with one row for each value set.
 }
 \description{
-Generate values for each field in `text_fields`. This function addresses
+Generate values for each field in \code{text_fields}. This function addresses
 all the text validation types
 }
 \examples{
