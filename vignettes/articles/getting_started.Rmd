@@ -43,7 +43,7 @@ purrr::walk(
 
 ## Generating the data
 
-The goal of redcapfiller is to generate a test dataset as complex as the project design using nothing more than the project design. The only required inputs are `redap_uri`, the uri to a REDCap host's API interface, and `token`, an API token to a project on that host.
+The goal of redcapfiller is to generate a test dataset as complex as the project design using nothing more than the project design. The only required inputs are `redcap_uri`, the uri to a REDCap host's API interface, and `token`, an API token to a project on that host.
 
 ```{r get-project-values-example-1}
 library(redcapfiller)

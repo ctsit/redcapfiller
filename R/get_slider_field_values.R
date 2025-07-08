@@ -1,12 +1,11 @@
-#' @title generate slider field values
+#' @title Generate slider field values
 #' @description
-#' Provide a set of values for each slider field in
-#' `slider_values`
+#' Generate values for each slider field in `slider_values`
 #'
-#' @param slider_values a long data set of slider values and weights.
+#' @param slider_values A long data set of slider values and weights.
 #'
-#' @return a tall dataframe of slider values with one row for each field
-#' @export
+#' @return A long dataframe of slider values with one row for each field
+#' @keywords Internal
 #'
 #' @examples
 #' \dontrun{

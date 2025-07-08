@@ -1,10 +1,18 @@
 #' Get Project Values
 #'
+#' @description
+#' Generate a dataset of synthetic data for a REDCap project using the project
+#' design retrieved via the REDCap API.
+#'
 #' @param redcap_uri REDCap API URI
 #' @param token REDCap project API token
-#' @param events (Optional) Vector of event names to fill
-#' @param number_of_records_to_populate Number of records to generate (default 5)
-#' @return List of data frames (one per event, or just one for classic projects)
+#' @param events An optional vector of event names to fill (defaults to all events)
+#' @param number_of_records_to_populate An optional number of records to generate (default 5)
+#'
+#' @return A list of data frames (one per event, or just one for classic
+#' projects). Each list element contains a dataframe of synthetic data
+#' for each of the forms on that event. Each dataframe is ready to load
+#' into REDCap.
 #' @export
 get_project_values <- function(
     redcap_uri,

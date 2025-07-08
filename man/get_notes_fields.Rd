@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_notes_fields.R
 \name{get_notes_fields}
 \alias{get_notes_fields}
-\title{Get long notes fields from a REDCap data dictionary}
+\title{Get notes fields from a REDCap data dictionary and annotate them with weights}
 \usage{
 get_notes_fields(metadata)
 }
@@ -10,19 +10,20 @@ get_notes_fields(metadata)
 \item{metadata}{A REDCap data dictionary}
 }
 \value{
-A dataframe with the following columns:
+A long dataframe with the following columns:
 \describe{
-  \item{field_name}{The name of the field.}
-  \item{form_name}{The form name in which the field is located.}
-  \item{field_type}{The type of the field (will always be "notes").}
-  \item{weight}{A uniform weight, set to 100.}
+\item{field_name}{The name of the field.}
+\item{form_name}{The form name in which the field is located.}
+\item{field_type}{The type of the field (this will always be \emph{notes}).}
+\item{weight}{A uniform weight, set to 100.}
 }
 }
 \description{
-Given a REDCap data dictionary, this function returns the fields (rows) that have a field type of notes.
+Given a REDCap data dictionary, this function returns the rows that have a field type of \emph{notes}.
 }
 \examples{
 \dontrun{
 notes_fields <- get_notes_fields(metadata_to_populate)
 }
 }
+\keyword{Internal}

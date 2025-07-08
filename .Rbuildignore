@@ -7,3 +7,5 @@ proof_of_concept.R
 ^\.github$
 ^vignettes/articles$
 CITATION.cff
+^docs/.*
+^_pkgdown.yml$

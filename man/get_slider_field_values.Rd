@@ -2,22 +2,22 @@
 % Please edit documentation in R/get_slider_field_values.R
 \name{get_slider_field_values}
 \alias{get_slider_field_values}
-\title{generate slider field values}
+\title{Generate slider field values}
 \usage{
 get_slider_field_values(slider_values)
 }
 \arguments{
-\item{slider_values}{a long data set of slider values and weights.}
+\item{slider_values}{A long data set of slider values and weights.}
 }
 \value{
-a tall dataframe of slider values with one row for each field
+A long dataframe of slider values with one row for each field
 }
 \description{
-Provide a set of values for each slider field in
-`slider_values`
+Generate values for each slider field in \code{slider_values}
 }
 \examples{
 \dontrun{
 get_slider_field_values(slider_values)
 }
 }
+\keyword{Internal}

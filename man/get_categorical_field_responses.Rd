@@ -10,14 +10,14 @@ get_categorical_field_responses(metadata)
 \item{metadata}{A REDCap data dictionary}
 }
 \value{
-a dataframe with these columns
+A long dataframe with these columns
 \describe{
-  \item{field_name}{First item}
-  \item{field_type}{Second item}
-  \item{response_code}{Second item}
-  \item{response_label}{Second item}
-  \item{field_group}{Second item}
-  \item{weight}{a set of uniform weights across the responses of each field}
+\item{field_name}{First item}
+\item{field_type}{Second item}
+\item{response_code}{Second item}
+\item{response_label}{Second item}
+\item{field_group}{Second item}
+\item{weight}{a set of uniform weights across the responses of each field}
 }
 }
 \description{
@@ -29,3 +29,4 @@ categorical_field_responses <-
   get_categorical_field_responses(metadata_to_populate)
 }
 }
+\keyword{Internal}

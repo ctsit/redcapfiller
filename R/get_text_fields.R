@@ -1,8 +1,9 @@
-#' @title Get every text field response from a REDCap data dictionary
+#' @title Get every text field from a REDCap data dictionary
 #'
 #' @description
 #' Given a REDCap data dictionary, enumerate every text field in that data dictionary
-#' and return a dataset with default weights
+#' along with validation types, min, and max, and append a text_validation_type (tvt)
+#' function name, weight, mean, and standard deviation as needed.
 #'
 #' @param metadata A REDCap data dictionary
 #'
@@ -16,10 +17,10 @@
 #'   \item{text_validation_max}{REDCap text validation max}
 #'   \item{tvt}{text validation type function name}
 #'   \item{weight}{a default weight for the field}
-#'   \item{mean}{mean of data to be generated}
-#'   \item{sd}{standard deviation of data to be generated}
+#'   \item{mean}{mean of data to be generated derived from the min and max}
+#'   \item{sd}{standard deviation of data to be generated derived from the min and max}
 #' }
-#' @export
+#' @keywords Internal
 #'
 #' @examples
 #' \dontrun{
