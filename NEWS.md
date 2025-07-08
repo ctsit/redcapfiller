@@ -1,3 +1,10 @@
+# redcapfiller 0.1.2 (released 2025-07-08)
+- Enable Roxygen2 markdown support (@pbchase, #44)
+- Reorganize 'Reference' section in pkgdown website (@pbchase, #44)
+- Add URL and BugReports to DESCRIPTION (@pbchase)
+- Add contributors to DESCRIPTION and CITATION.cff (@pbchase, #43)
+- Make most functions internal (@pbchase, #42)
+
 # redcapfiller 0.1.1 (released 2025-06-11)
 - Fix initial release errors (@pbchase, #36)
 
