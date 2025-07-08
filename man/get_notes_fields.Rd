@@ -12,14 +12,14 @@ get_notes_fields(metadata)
 \value{
 A long dataframe with the following columns:
 \describe{
-  \item{field_name}{The name of the field.}
-  \item{form_name}{The form name in which the field is located.}
-  \item{field_type}{The type of the field (this will always be _notes_).}
-  \item{weight}{A uniform weight, set to 100.}
+\item{field_name}{The name of the field.}
+\item{form_name}{The form name in which the field is located.}
+\item{field_type}{The type of the field (this will always be \emph{notes}).}
+\item{weight}{A uniform weight, set to 100.}
 }
 }
 \description{
-Given a REDCap data dictionary, this function returns the rows that have a field type of _notes_.
+Given a REDCap data dictionary, this function returns the rows that have a field type of \emph{notes}.
 }
 \examples{
 \dontrun{

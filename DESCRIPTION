@@ -65,3 +65,4 @@ Imports:
 RoxygenNote: 7.3.2
 URL: https://ctsit.github.io/redcapfiller/, https://github.com/ctsit/redcapfiller/
 BugReports: https://github.com/ctsit/redcapfiller/issues/
+Roxygen: list(markdown = TRUE)

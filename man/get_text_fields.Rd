@@ -12,16 +12,16 @@ get_text_fields(metadata)
 \value{
 a dataframe with these columns
 \describe{
-  \item{field_name}{REDCap field name}
-  \item{form_name}{REDCap form name}
-  \item{field_type}{REDCap field type}
-  \item{text_validation_type}{REDCap text validation type}
-  \item{text_validation_min}{REDCap text validation min}
-  \item{text_validation_max}{REDCap text validation max}
-  \item{tvt}{text validation type function name}
-  \item{weight}{a default weight for the field}
-  \item{mean}{mean of data to be generated derived from the min and max}
-  \item{sd}{standard deviation of data to be generated derived from the min and max}
+\item{field_name}{REDCap field name}
+\item{form_name}{REDCap form name}
+\item{field_type}{REDCap field type}
+\item{text_validation_type}{REDCap text validation type}
+\item{text_validation_min}{REDCap text validation min}
+\item{text_validation_max}{REDCap text validation max}
+\item{tvt}{text validation type function name}
+\item{weight}{a default weight for the field}
+\item{mean}{mean of data to be generated derived from the min and max}
+\item{sd}{standard deviation of data to be generated derived from the min and max}
 }
 }
 \description{

@@ -8,6 +8,15 @@
 \description{
 Fill a REDCap project with synthetic data based on the project design and a minimal set of inputs.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://ctsit.github.io/redcapfiller/}
+  \item \url{https://github.com/ctsit/redcapfiller/}
+  \item Report bugs at \url{https://github.com/ctsit/redcapfiller/issues/}
+}
+
+}
 \author{
 \strong{Maintainer}: Philip Chase \email{pbc@ufl.edu} (\href{https://orcid.org/0000-0002-5318-9420}{ORCID})
 
