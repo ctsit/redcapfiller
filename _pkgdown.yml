@@ -1,0 +1,33 @@
+template:
+  bootstrap: 5
+
+reference:
+  - title: "Public functions"
+    desc: >
+      These are the public-facing functions.
+    contents:
+      - get_project_values
+  - title: "Internal functions"
+    desc: >
+      These are the internal functions. They are rarely used.
+    contents:
+      - get_one_rectangle_of_values
+  - subtitle: Field / response enumerating functions
+    desc: >
+      These functions identify fields of a specific type, enumerate them and
+      get/generate the attributes that describe them and the yet-to-be
+      generated values.
+    contents:
+      - get_categorical_field_responses
+      - get_notes_fields
+      - get_slider_fields
+      - get_text_fields
+  - subtitle: Value generating functions
+    desc: >
+      These functions synthesize values for a specific field type given
+      descriptions created by the Field / response enumerating functions.
+    contents:
+      - get_categorical_field_response_values
+      - get_notes_field_values
+      - get_slider_field_values
+      - get_text_field_values
