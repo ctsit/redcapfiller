@@ -52,8 +52,6 @@ Suggests:
     stringr,
     mockery,
     testthat (>= 3.0.0)
-Remotes:
-    github::ctsit/redcapfiller
 Config/testthat/edition: 3
 Imports: 
     dplyr,
@@ -65,3 +63,5 @@ Imports:
     checkmate,
     REDCapR
 RoxygenNote: 7.3.2
+URL: https://ctsit.github.io/redcapfiller/, https://github.com/ctsit/redcapfiller/
+BugReports: https://github.com/ctsit/redcapfiller/issues/
