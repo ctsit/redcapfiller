@@ -19,7 +19,7 @@ remotes::install_github("ctsit/redcapfiller")
 
 See [Getting started with redcapfiller](https://ctsit.github.io/redcapfiller/articles/getting_started.html) to learn how to use redcapfiller.
 
-### Limitations
+### Features
 
 REDCap Filler does not yet understand all the dimensions of a modern REDCap project. It can fill the categorical fields. It can fill unvalidated text fields and the text validation types date, datetime, email, integer, number, phone, and zip code. It ignores all other field types and validation types and will not attempt to fill them. Filler can fill classic and longitudinal projects, but not if they have repeating forms, repeating events, or randomization enabled. It does not honor form display logic and ignores all fields governed by branching logic.
 
