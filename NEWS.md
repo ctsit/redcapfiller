@@ -1,3 +1,6 @@
+# redcapfiller 0.1.3 (released 2025-07-09)
+- Fix heading in README (@pbchase)
+
 # redcapfiller 0.1.2 (released 2025-07-08)
 - Enable Roxygen2 markdown support (@pbchase, #44)
 - Reorganize 'Reference' section in pkgdown website (@pbchase, #44)
