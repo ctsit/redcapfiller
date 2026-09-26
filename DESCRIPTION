@@ -23,7 +23,7 @@ Authors@R: c(
         role = "ctb",
         comment=c(ORCID = "0009-0004-2983-1542")),
   person("William", "Beasley",
-        email = "whb4@ou.edu",
+        email = "wibeasley@hotmail.com",
         role = "ctb",
         comment=c(ORCID = "0000-0002-5613-5006")),
   person("Aidan", "Wilson",
